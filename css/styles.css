@@ -1,0 +1,119 @@
+body, html
+{
+	margin:0px;
+	padding:0px;
+	text-align:center;
+	font-family: 'Times New Roman', serif;
+	font-size: 12pt;
+	color: #0;
+}
+
+#container
+{
+	margin:0 auto; 
+	text-align:left; 
+	min-width:550px;
+	width:expression
+	(document.compatMode && document.compatMode == 'CSS1Compat')
+	?
+	(
+	document.documentElement.clientWidth < 550
+	?
+	"550px"
+	:
+	"auto"
+	)
+	:
+	(
+	document.body.clientWidth < 550
+	?
+	"550px"
+	:
+	"auto"
+	)
+	);
+}
+
+#header
+{
+	background-color:#B03060;
+	 text-align:center;
+}
+
+#header h1 
+{
+	margin: 0;
+	padding: 10px 0;
+}
+
+#left
+{
+	margin: 1px; 
+	padding: 5px;
+	border-style:solid ; 
+	border-width: 1px;
+	border-color: black;
+	border-color: double;
+	background-color:#B03060;
+	width:190px;
+	height: 565px;
+	float:left;
+}
+
+#content
+{	margin: 1px; 
+	padding: 5px;
+	border-style: solid ; 
+	border-width: 1px;
+	border-color: black;
+	border-color: double;
+	background-color:#FFFFFF;
+	margin-left:205px;
+	height: 565px;
+	
+}
+
+#content h1 
+{
+	margin:0px;
+}
+
+#content p
+{
+	margin:0px;
+	padding:5px;
+}
+
+#clear
+{
+	height:0;
+	font-size:1px;
+	line-height:0px;
+	clear:both;
+}
+
+#footer
+{	
+	text-align:center;
+	background-color:#B03060;
+}
+
+#footer p
+{
+	margin:0px;
+	padding: 10px 0;
+}
+
+menutitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 1.05em; PADDING-BOTTOM: 5px; COLOR: #fff; PADDING-TOP: 3px;  LETTER-SPACING: 0.15em;TEXT-ALIGN: center; background-color:#d5d7b5; MARGIN: 3px; }
+
+#menu {
+	FLOAT: left;  PADDING-TOP: 0px; TEXT-ALIGN: left;}
+#menu A {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #FFFFFF; TEXT-DECORATION: none;TEXT-ALIGN: left;} 
+#menu A:hover {
+	TEXT-DECORATION: underline;}
+#menu UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; LINE-HEIGHT: 10px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none; TEXT-ALIGN: left;}
+#menu LI {
+	BORDER-RIGHT: #b1bdfd 0px solid; PADDING-RIGHT: 0px; BORDER-TOP: #b1bdfd 0px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #b1bdfd 0px solid; PADDING-TOP: 7px; BORDER-BOTTOM: #ffffff 1px solid;}
