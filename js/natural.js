@@ -34,3 +34,24 @@ function ADD_1N_N(num) {
     }
     return num;
 }
+
+function ADD_NN_N(first, second) {
+	let a = new Natural(first.toString())
+	let b = new Natural(second.toString())
+	if(COM_NN_D(a, b) == 1) {
+		b = new Natural(first.toString())
+		a = new Natural(second.toString())
+	}
+	for(let i=0; i < a.digits.length; i++) {
+		if(i < b.digits.length) 
+			a.digits[i] += b.digits[i];
+		if(a.digits[i] > 9) {
+			a.digits[i + 1] = a.digits[i + 1] ? a.digits[i + 1] + 1 : 1;
+			a.digits[i] %= 10;
+		}
+	}
+	return a;
+}	
+
+
+		
