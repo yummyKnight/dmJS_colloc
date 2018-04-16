@@ -1,3 +1,4 @@
+"use strict";
 class Natural {
     constructor(str) {
         this.digits = str.split('').map((i) => +i).reverse();

@@ -1,3 +1,4 @@
+"use strict";
 class Integer {
     constructor(str) {
         if (str[0] == '-') {
