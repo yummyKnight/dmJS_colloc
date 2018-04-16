@@ -11,11 +11,13 @@ middle_workers = [
     'Евгений Шалугин',
     'Андрей Васильев', 
     'Валера Ермоленко',
+    'Екатерина Николаева',
 ]
 
 # Сложных работников добавлять сюда
 hard_workers = [ 
     'Никита Ефимчик',
+    'Анонимный Аноним',
 ]
 easy_tasks = [
     'COM_NN_D', 'NZER_N_B', 'ADD_1N_N', 'LCM_NN_N', 'ABS_Z_N',
@@ -42,7 +44,7 @@ def give_tasks(tasks, workers):
         t = tasks[k * task_per_one : k * task_per_one + task_per_one]
         print(f'{str(i)}: {t}')
     if (len(tasks) % len(workers)):
-        m = tasks[len(workers) - 1 * task_per_one:]
+        m = tasks[len(workers) - 1 * task_per_one - 1:]
         print(f"Остаток: {m}")
     print('\n\n')
 
