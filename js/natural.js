@@ -77,6 +77,8 @@ function MUL_ND_N(first, b) {
 }
 
 function MUL_Nk_N(first, k) {
+	if(first == 0)
+		return 0;
 	for(let i = 0; i < k; i++)
 		first += 0;
 	first = new Natural(first);
