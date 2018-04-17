@@ -18,3 +18,26 @@ class Integer {
     }
 }
 
+function MUL_ZZ_Z(first,second) {
+    let number = MUL_NN_N(first.num,second.num);
+    let result = TRANS_N_Z(number);
+    //set isNegative
+    result.isNegative = first.isNegative != second.isNegative;
+    return result;
+}
+
+function DIV_ZZ_Z(first,second) {
+    let number = DIV_NN_N(first.num,second.num);
+    let result = TRANS_N_Z(number);
+    //set isNegative
+    result.isNegative = first.isNegative != second.isNegative;
+    return result;
+}
+
+function MOD_ZZ_Z(first,second) {
+    let number = MOD_NN_N(first.num,second.num);
+    let result = TRANS_N_Z(number);
+    //set isNegative
+    result.isNegative = first.isNegative != second.isNegative;
+    return result;
+}
