@@ -13,7 +13,6 @@ class Natural {
     }
 }
 
-
 function COM_NN_D(first, second) {
     if (first.digits.length != second.digits.length) {
         return (first.digits.length > second.digits.length) ? 2 : 1;
@@ -58,6 +57,25 @@ function ADD_NN_N(first, second) {
 	}
 	return a;
 }	
+
+function MUL_ND_N(first, b) {
+	let a = new Natural(first.toString())
+	let i;
+	for(i = 0; i < a.digits.length; i++)
+		a.digits[i] *= b;
+	for(i = 0; i < a.digits.length; i++) {
+		if((a.digits[i] > 9) && (i < (a.digits.length - 1))) {
+			a.digits[i + 1] += Math.floor(a.digits[i]/10);
+			a.digits[i] %= 10;
+		}
+		if((a.digits[i] > 9) && (i == (a.digits.length - 1))) {
+			a.digits[i + 1] = Math.floor(a.digits[i]/10);
+			a.digits[i] %= 10;
+		}
+	}
+	return a;
+}
+
 function MUL_Nk_N(first, k) {
 	for(let i = 0; i < k; i++)
 		first += 0;
