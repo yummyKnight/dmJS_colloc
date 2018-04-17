@@ -59,3 +59,32 @@ class Polynome {
         return result;
     }
 }
+
+function MUL_PP_P(first, second) {
+    let result = new Polynome('0');
+    for (let i of Object.keys(second.monomes)) {
+        result =ADD_PP_P( // Add to result
+            result,
+            MUL_PXk_P( // Mul result of previous operation by x^i, i is current monome deg
+                MUL_PQ_P( // Mul second poly with current poly coeff
+                    second,
+                    first.monomes[i]
+                ),
+                new Natural(i)
+            )
+        )
+    }
+    return result;
+}
+
+function DIV_PP_P(first, second) {
+    // Not yet
+}
+
+function MOD_PP_P(first, second) {
+    return SUB_PP_P(first, MUL_PP_P(second, DIV_PP_P(first, second)));
+}
+
+function GCD_PP_P(first, second) {
+    // Not yet
+}
