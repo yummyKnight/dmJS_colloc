@@ -1,9 +1,15 @@
+"use strict";
 class Natural {
     constructor(str) {
         this.digits = str.split('').map((i) => +i).reverse();
     }
     toString() {
         return this.digits.slice().reverse().join('');
+    }
+    strip() {
+        while (this.digits[this.digits.length - 1] == 0)
+        this.digits.length--
+        return this;
     }
 }
 
@@ -52,6 +58,9 @@ function ADD_NN_N(first, second) {
 	}
 	return a;
 }	
-
-
-		
+function MUL_Nk_N(first, k) {
+	for(let i = 0; i < k; i++)
+		first += 0;
+	first = new Natural(first);
+	return first;
+}

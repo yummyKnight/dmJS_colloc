@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Mocha Tests</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.1.0/mocha.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="mocha"></div>
+
+    <!-- <script src="https://cdn.rawgit.com/jquery/jquery/2.1.4/dist/jquery.min.js"></script> -->
+    <!-- <script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.1.0/mocha.min.js"></script>
+    <!-- Setup mocha -->
+    <script>mocha.setup('bdd')</script>
+    <!-- Include chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.1.2/chai.min.js"></script>
+    <script>
+        var assert = chai.assert;
+    </script>
+    <!-- Here add testing js -->
+    <script src="../js/polynome.js"></script>
+    <!-- Here add testing specs -->
+    <script src="specs/polynome-specs.js"></script>
+    <script>
+        mocha.checkLeaks();
+        // mocha.globals(['jQuery']);
+        mocha.run();
+    </script>
+</body>
+
+</html>
