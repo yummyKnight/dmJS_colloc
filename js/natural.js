@@ -86,7 +86,6 @@ function SUB_NN_N(first, second) {
 function MUL_Nk_N(first, k) {
 	for(let i = 0; i < k; i++)
 		first += 0;
-	first.strip();
 	first = new Natural(first);
 	return first;
 }
