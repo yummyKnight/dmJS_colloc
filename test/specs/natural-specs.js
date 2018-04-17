@@ -67,3 +67,14 @@ describe("MUL_Nk_N", function() {
         assert.equal(MUL_Nk_N("87974848488789754", "17"),8797484848878975400000000000000000);
     });
 });
+describe("MUL_ND_N", function() {
+    it("35469 * 3 = 106407", function(){
+        assert.equal(MUL_ND_N(new Natural ("35469"), new Natural("3")),106407);
+    });
+    it("6487878 * 7 = 45415146", function(){
+        assert.equal(MUL_ND_N(new Natural("6487878"), new Natural("7")),45415146);
+    });
+    it("9999999999 * 9 = 89999999991", function(){
+        assert.equal(MUL_ND_N(new Natural("9999999999"), new Natural("9")),89999999991);
+    });
+});
