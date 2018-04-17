@@ -12,5 +12,9 @@ class Integer {
     toString() {
         return (this.isNegative) ? '-' + this.num : '' + this.num;
     }
+    strip() {
+        this.num.strip();
+        return this;
+    }
 }
 

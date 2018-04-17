@@ -6,6 +6,11 @@ class Natural {
     toString() {
         return this.digits.slice().reverse().join('');
     }
+    strip() {
+        while (this.digits[this.digits.length - 1] == 0)
+        this.digits.length--
+        return this;
+    }
 }
 
 

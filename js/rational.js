@@ -8,4 +8,9 @@ class Rational {
     toString() {
         return this.numerator + '/' + this.denominator;
     }
+    strip() {
+        this.numerator.strip();
+        this.denominator.strip();
+        return this;
+    }
 }
