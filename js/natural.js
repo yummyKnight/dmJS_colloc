@@ -98,6 +98,7 @@ function MUL_ND_N(first, b) {
 			a.digits[i] %= 10;
 		}
 	}
+	a.strip();
 	return a;
 }
 
