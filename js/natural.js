@@ -7,7 +7,15 @@ class Natural {
         return this.digits.slice().reverse().join('');
     }
     strip() {
-        while (this.digits[this.digits.length - 1] == 0)
+		let i
+		if(this.digits[0] == 0){
+		 i = 2
+		}
+		else
+		{
+		i = 1
+		}
+        while (this.digits[this.digits.length - i] == 0)
         this.digits.length--
         return this;
     }
