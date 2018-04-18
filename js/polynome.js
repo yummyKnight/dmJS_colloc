@@ -74,6 +74,19 @@ class Polynome {
     static get zero() {
         return new Polynome('0');
     }
+    // idk why not working
+    deleteZero()
+    {   
+        if(Object.keys(this.monomes).length != 0)
+        {
+        for (let i of Object.keys(this.monomes))
+        {
+            if(this.monomes[i].numerator == Integer.zero)
+                delete this.monomes[i];
+        }
+    }   
+        return this;
+    }
 }
 
 function DEG_P_N(first) {
@@ -129,4 +142,45 @@ function GCD_PP_P(first, second) {
         }
     }
     return ADD_PP_P(first, second);
+}
+function ADD_PP_P(first, second)
+{  
+for(let i of Object.keys(second.monomes))
+{  
+    if(first.monomes[i] !== undefined)
+    {    // if degree is exist, sum coef
+       first.monomes[i] = ADD_QQ_Q(first.monomes[i],second.monomes[i])
+    }
+    else
+    {   // else creat such degree and copy coef from factor
+        first.monomes[i] = second.monome[i];
+    }
+}
+    return first
+}
+function  SUB_PP_P(first, second)
+{   // change sign in every coef
+    for(let i of Object.keys(second.monomes))
+    {   
+        second.monomes[i].numerator.isNegative = second.monomes[i].numerator.isNegative ? false : true;
+    }
+    return ADD_PP_P(first,second);
+}
+function MUL_PQ_P(poly, num)
+{
+    for(let i of Object.keys(poly.monomes))
+    {   
+        poly.monomes[i] = MUL_QQ_Q(poly.monomes[i], num);
+    }
+    return poly;
+}
+// 100% work
+function MUL_Pxk_P(poly, num)
+{   
+    for(let i of Object.keys(poly.monomes))
+    {
+        poly.monomes[ADD_NN_N(i,num)] = poly.monomes[i];
+        delete poly.monomes[i];
+    }
+    return poly;
 }
