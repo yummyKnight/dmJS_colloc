@@ -9,3 +9,15 @@ it("500 на 34 вернет 0", function() {
 assert.equal(INT_Q_B(new Rational ("500/34")), 0); // Проверяет на совпадение value_1 и value_2
 });
 });
+
+describe("MUL_QQ_Q", function() {
+it("Тест 1 : 3/2 * 10/8 = 15/8", function() {
+assert.equal(MUL_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), 15/8); // Проверяет на совпадение value_1 и value_2
+});
+it("Тест 2 : 1/1000 * 54/99 = 3/5500", function() {
+assert.equal(MUL_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), 1/5500); // Проверяет на совпадение value_1 и value_2
+});
+it("Тест 3 : 833/500 * 653/1000000000 = 543949/5000000000000", function() {
+assert.equal(MUL_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")),543949/5000000000000); // Проверяет на совпадение value_1 и value_2
+});
+});

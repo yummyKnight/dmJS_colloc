@@ -33,21 +33,27 @@ var MOD = MOD_ZZ_Z (num.numerator, num.denominator);
 return MOD == 0 ? 1 : 0;
 }
 
-describe("MUL_QQ_Q", function() {
-it("Тест 1 : 3/2 * 10/8 = 15/8", function() {
-assert.equal(MUL_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), 15/8); // Проверяет на совпадение value_1 и value_2
-});
-it("Тест 2 : 1/1000 * 54/99 = 3/5500", function() {
-assert.equal(MUL_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), 1/5500); // Проверяет на совпадение value_1 и value_2
-});
-it("Тест 3 : 833/500 * 653/1000000000 = 543949/5000000000000", function() {
-assert.equal(MUL_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")),543949/5000000000000); // Проверяет на совпадение value_1 и value_2
-});
-});
 function MUL_QQ_Q(num1, num2)
 {
-var result = new Rational(num.toString());
-result.numerator = MUL_ZZ_Z(num1.numerator, num2.numerator);
-result.denominator = MUL_NN_N(num1.denominator, num2.denominator);
-return result;
+var a = new Rational(num1.toString());
+var b = new Rational(num2.toString());
+a.numerator = MUL_ZZ_Z(a.numerator, b.numerator);
+a.denominator = MUL_NN_N(a.denominator, b.denominator);
+return a;
+}
+
+function ADD_QQ_Q (num1, num2)
+{
+var a = new Rational(num1.toString());
+var b = new Rational(num2.toString());
+if(COM_NN_D(a.numerator, b.denominator) == 1) {//Если знаменатели равны
+a.numerator = ADD_ZZ_Z(a.numerator,b.numerator);//Складываем числители
+}else{//иначе
+var lcm = LCM_NN_N(a.denominator,b.denominator);//Находим НОК
+a.numerator = MUL_ZZ_Z(a.numerator,DIV_NN_N(lcm, a.denominator)); //Умножаем числитель первого числа на НОК/знаменатель первого числа
+b.numerator = MUL_ZZ_Z(b.numerator,DIV_NN_N(lcm, b.denominator));//Умножаем числитель второго числа на НОК/знаменатель первого числа
+a.numerator = ADD_ZZ_Z(a.numerator,b.numerator)// Складываем
+a.denominator = lcm;
+}
+return a;
 }
