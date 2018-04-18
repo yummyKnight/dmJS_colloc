@@ -58,10 +58,43 @@ class Polynome {
         result = result[1] == '+' ? result.slice(2).trim() : result.trim();
         return result;
     }
+    get sortedDegs() {
+        return Object.keys(this.monomes).sort((a, b) => {
+            // Slow part of code, need to refactor
+            let res = COM_NN_D(new Natural(a), new Natural(b));
+            if (res == 0) {
+                return res
+            } else if (res == 1) {
+                return 1;
+            } else {
+                return -1;
+            }
+        })
+    }
+    static get zero() {
+        return new Polynome('0');
+    }
+    // idk why not working
+    deleteZero()
+    {   
+        if(Object.keys(this.monomes).length != 0)
+        {
+        for (let i of Object.keys(this.monomes))
+        {
+            if(this.monomes[i].numerator == Integer.zero)
+                delete this.monomes[i];
+        }
+    }   
+        return this;
+    }
+}
+
+function DEG_P_N(first) {
+    return new Natural(first.sortedDegs[0]);
 }
 
 function MUL_PP_P(first, second) {
-    let result = new Polynome('0');
+    let result = Polynome.zero;
     for (let i of Object.keys(second.monomes)) {
         result =ADD_PP_P( // Add to result
             result,
@@ -78,7 +111,22 @@ function MUL_PP_P(first, second) {
 }
 
 function DIV_PP_P(first, second) {
-    // Not yet
+    let result = Polynome.zero;
+    const secondDeg = DEG_P_N(second);
+    const secondCoef = second.monomes[secondDeg];
+    // While degree of the first poly is greater or equals degree of the second
+    while (COM_NN_D(DEG_P_N(first), secondDeg) != 1) {
+        // Finding new monome, that would be added to result
+        // The rule here is coeff of new monome would be coeff at the max degree of first 
+        // divided by the coeff at max degree of second (which is const), and the deg of monome
+        // is simply delta between first degree and second degree. 
+        let deltaDeg = SUB_NN_N(DEG_P_N(first), secondDeg);
+        let deltaCoef = DIV_QQ_Q(first.monomes[DEG_P_N(first)], secondDeg)
+        let currentMonome = new Polynome(`${deltaCoef}x^${deltaDeg}`);
+        result = ADD_PP_P(result, currentMonome);
+        first = SUB_PP_P(first, MUL_PP_P(second, currentMonome));
+    }
+    return result;
 }
 
 function MOD_PP_P(first, second) {
@@ -86,5 +134,53 @@ function MOD_PP_P(first, second) {
 }
 
 function GCD_PP_P(first, second) {
-    // Not yet
+    while (COM_NN_D(DEG_P_N(first), Natural.zero) && COM_NN_D(DEG_P_N(second), Natural.zero)) {
+        if (COM_NN_D(DEG_P_N(first), DEG_P_N(second)) == 2) {
+            first = MOD_PP_P(first, second);
+        } else {
+            second = MOD_PP_P(second, first);
+        }
+    }
+    return ADD_PP_P(first, second);
+}
+function ADD_PP_P(first, second)
+{  
+for(let i of Object.keys(second.monomes))
+{  
+    if(first.monomes[i] !== undefined)
+    {    // if degree is exist, sum coef
+       first.monomes[i] = ADD_QQ_Q(first.monomes[i],second.monomes[i])
+    }
+    else
+    {   // else creat such degree and copy coef from factor
+        first.monomes[i] = second.monome[i];
+    }
+}
+    return first
+}
+function  SUB_PP_P(first, second)
+{   // change sign in every coef
+    for(let i of Object.keys(second.monomes))
+    {   
+        second.monomes[i].numerator.isNegative = second.monomes[i].numerator.isNegative ? false : true;
+    }
+    return ADD_PP_P(first,second);
+}
+function MUL_PQ_P(poly, num)
+{
+    for(let i of Object.keys(poly.monomes))
+    {   
+        poly.monomes[i] = MUL_QQ_Q(poly.monomes[i], num);
+    }
+    return poly;
+}
+// 100% work
+function MUL_Pxk_P(poly, num)
+{   
+    for(let i of Object.keys(poly.monomes))
+    {
+        poly.monomes[ADD_NN_N(i,num)] = poly.monomes[i];
+        delete poly.monomes[i];
+    }
+    return poly;
 }

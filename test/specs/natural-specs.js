@@ -24,13 +24,13 @@ describe("COM_NN_D", function() {
 
 describe("ADD_1N_D", function() {
     it("999 + 1 = 1000", function(){
-        assert.equal(ADD_1N_N(new Natural("999")), "1000");
+        assert.equal(ADD_1N_N(new Natural("999")), 1000);
     });
     it("0 + 1 = 1", function(){
-        assert.equal(ADD_1N_N(new Natural("0")), "1");
+        assert.equal(ADD_1N_N(new Natural("0")), 1);
     });
     it("123456 + 1 = 123457", function(){
-        assert.equal(ADD_1N_N(new Natural("123456")), "123457");
+        assert.equal(ADD_1N_N(new Natural("123456")), 123457);
     });
 });
 

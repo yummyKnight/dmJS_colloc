@@ -7,18 +7,14 @@ class Natural {
         return this.digits.slice().reverse().join('');
     }
     strip() {
-		let i
-		if(this.digits[0] == 0){
-		 i = 2
+        while (this.digits[this.digits.length] == 0 && this.digits.length > 1) {
+			this.digits.length--;			
 		}
-		else
-		{
-		i = 1
-		}
-        while (this.digits[this.digits.length - i] == 0)
-        this.digits.length--
         return this;
-    }
+	}
+	static get zero() {
+		return new Natural('0');
+	}
 }
 
 function COM_NN_D(first, second) {
@@ -66,27 +62,27 @@ function ADD_NN_N(first, second) {
 	return a;
 }
 
-function SUB_NN_N(first, second) {
-	let a = new Natural(first.toString())
-	let b = new Natural(second.toString())
-	if(COM_NN_D(a, b) == 0)
-		return 0;
-	else if(COM_NN_D(a, b) == 1) {
-			b = new Natural(first.toString())
-			a = new Natural(second.toString())
-		}
-	for(let i=0; i < a.digits.length; i++) {
-		if(i < (a.digits.length - 1)) {
-			a.digits[i + 1]--;
-			a.digits[i] += 10;
-		}
-		if(i < b.digits.length)
-			a.digits[i] -= b.digits[i];
-		if(a.digits[i] > 9) {
-			a.digits[i + 1]++;
-			a.digits[i] %= 10;
-		}
-	}
+function SUB_NN_N(first, second) { 
+	let a = new Natural(first.toString()) 
+	let b = new Natural(second.toString()) 
+	if(COM_NN_D(a, b) == 0) 
+		return Natural.zero; 
+	else if(COM_NN_D(a, b) == 1) { 
+			b = new Natural(first.toString()) 
+			a = new Natural(second.toString()) 
+		} 
+	for(let i=0; i < a.digits.length; i++) { 
+		if(i < (a.digits.length - 1)) { 
+			a.digits[i + 1]--; 
+			a.digits[i] += 10; 
+		} 
+		if(i < b.digits.length) 
+			a.digits[i] -= b.digits[i]; 
+		if(a.digits[i] > 9) { 
+			a.digits[i + 1]++; 
+			a.digits[i] %= 10; 
+		} 
+	} 
 	a.strip();
 	return a;
 }
@@ -111,8 +107,9 @@ function MUL_ND_N(first, b) {
 }
 
 function MUL_Nk_N(first, k) {
+	first = first.toString();
 	if(first == 0)
-		return 0;
+		return Natural.zero;
 	for(let i = 0; i < k; i++)
 		first += 0;
 	first = new Natural(first);
