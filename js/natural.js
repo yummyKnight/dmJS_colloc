@@ -18,7 +18,10 @@ class Natural {
         while (this.digits[this.digits.length - i] == 0)
         this.digits.length--
         return this;
-    }
+	}
+	static get zero() {
+		return new Natural('0');
+	}
 }
 
 function COM_NN_D(first, second) {

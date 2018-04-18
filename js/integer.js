@@ -16,6 +16,9 @@ class Integer {
         this.num.strip();
         return this;
     }
+    static get zero() {
+        return new Integer("0");
+    }
 }
 
 function MUL_ZZ_Z(first,second) {

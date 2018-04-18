@@ -13,4 +13,7 @@ class Rational {
         this.denominator.strip();
         return this;
     }
+    static get zero() {
+        return new Rational("0/1");
+    }
 }
