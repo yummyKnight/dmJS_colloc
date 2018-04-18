@@ -106,7 +106,7 @@ function DIV_PP_P(first, second) {
         // Finding new monome, that would be added to result
         // The rule here is coeff of new monome would be coeff at the max degree of first 
         // divided by the coeff at max degree of second (which is const), and the deg of monome
-        // is simply delta within first degree and second degree. 
+        // is simply delta between first degree and second degree. 
         let deltaDeg = SUB_NN_N(DEG_P_N(first), secondDeg);
         let deltaCoef = DIV_QQ_Q(first.monomes[DEG_P_N(first)], secondDeg)
         let currentMonome = new Polynome(`${deltaCoef}x^${deltaDeg}`);
