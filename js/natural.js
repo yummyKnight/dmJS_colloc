@@ -52,7 +52,7 @@ function ADD_NN_N(first, second) {
 		a = new Natural(second.toString())
 	}
 	for(let i=0; i < a.digits.length; i++) {
-		if(i < b.digits.length) 
+		if(i < b.digits.length)
 			a.digits[i] += b.digits[i];
 		if(a.digits[i] > 9) {
 			a.digits[i + 1] = a.digits[i + 1] ? a.digits[i + 1] + 1 : 1;
@@ -60,7 +60,7 @@ function ADD_NN_N(first, second) {
 		}
 	}
 	return a;
-}	
+}
 
 function SUB_NN_N(first, second) { 
 	let a = new Natural(first.toString()) 
@@ -84,7 +84,7 @@ function SUB_NN_N(first, second) {
 		} 
 	} 
 	a.strip();
-	return a; 
+	return a;
 }
 
 function MUL_ND_N(first, b) {
@@ -114,4 +114,33 @@ function MUL_Nk_N(first, k) {
 		first += 0;
 	first = new Natural(first);
 	return first;
+}
+
+function MOD_NN_N(first, second) {
+	let a = new Natural(first.toString())
+	let b = new Natural(second.toString())
+	if(COM_NN_D(a, b) == 1) {
+		b = new Natural(first.toString())
+		a = new Natural(second.toString())
+	}
+  let col = DIV_NN_N(a, b);
+  a = SUB_NDN_N(a, col, b);
+  return a;
+}
+
+function DCF_NN_N(first, second) {
+  let a = new Natural(first.toString());
+  let b = new Natural(second.toString());
+  if(COM_NN_D(a, b) == 1) {
+    b = new Natural(first.toString());
+    a = new Natural(second.toString());
+  }
+  while (MOD_NN_N(a,b) != 0) {
+    if (COM_NN_D(a, b) == 2) {
+      a = SUB_NN_N(a, b);
+    } else if (COM_NN_D(a, b) == 1) {
+      b = SUB_NN_N(b, a);
+    }
+  }
+  return a;
 }
