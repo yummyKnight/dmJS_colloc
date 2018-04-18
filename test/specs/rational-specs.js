@@ -21,3 +21,15 @@ it("Тест 3 : 833/500 * 653/1000000000 = 543949/5000000000000", function() {
 assert.equal(MUL_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")),543949/5000000000000); // Проверяет на совпадение value_1 и value_2
 });
 });
+
+describe("ADD_QQ_Q", function() {
+it("Тест 1 : 3/2 + 11/8 = 23/8", function() {
+assert.equal(ADD_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), 23/8); // Проверяет на совпадение value_1 и value_2
+});
+it("Тест 2 : 1/1000 + 54/99 = 6011/11000", function() {
+assert.equal(ADD_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), 6011/11000); // Проверяет на совпадение value_1 и value_2
+});
+it("Тест 3 : 833/500 + 653/1000000000 = 1666000653/1000000000", function() {
+assert.equal(ADD_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")),1666000653/1000000000); // Проверяет на совпадение value_1 и value_2
+});
+});
