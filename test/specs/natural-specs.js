@@ -78,3 +78,14 @@ describe("MUL_ND_N", function() {
         assert.equal(MUL_ND_N(new Natural("9999999999"), new Natural("9")),89999999991);
     });
 });
+describe("MOD_NN_N", function() {
+    it("3549561 на 54231, остаток = 24546", function(){
+        assert.equal(MOD_NN_N(new Natural ("3549561"), new Natural("54231")),24546);
+    });
+    it("12 на 3, остаток = 0", function(){
+        assert.equal(MUL_ND_N(new Natural("12"), new Natural("3")), 0);
+    });
+    it("9999999999 на 15978642 = 13348749", function(){
+        assert.equal(MUL_ND_N(new Natural("9999999999"), new Natural("15978642")), 13348749);
+    });
+});
