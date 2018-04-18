@@ -17,3 +17,12 @@ class Rational {
         return new Rational("0/1");
     }
 }
+
+function TRANS_Z_Q(num)
+{
+    return new Rational(num.toString());
+}
+function TRANS_Q_Z(num)
+{   // no checking that denum == 1. Need to throw Error? 
+    return new Integer(num.numerator.toString());
+}
