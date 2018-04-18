@@ -88,4 +88,18 @@ describe("MOD_NN_N", function() {
     it("9999999999 на 15978642 = 13348749", function(){
         assert.equal(MUL_ND_N(new Natural("9999999999"), new Natural("15978642")), 13348749);
     });
+    it("12 на 12, остаток = 0", function(){
+        assert.equal(MUL_ND_N(new Natural("12"), new Natural("12")), 0);
+    });
+});
+describe("GCF_NN_N", function() {
+    it("8253467589 на 1554, НОД = 3", function(){
+        assert.equal(GCF_NN_N(new Natural ("8253467589"), new Natural("1554")),3);
+    });
+    it("12 на 12, НОД = 12", function(){
+        assert.equal(GCF_NN_N(new Natural("12"), new Natural("12")), 12);
+    });
+    it("1005 на 328, НОД = 1", function(){
+        assert.equal(GCF_NN_N(new Natural("1005"), new Natural("328")), 1);
+    });
 });

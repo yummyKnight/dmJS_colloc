@@ -130,3 +130,20 @@ function MOD_NN_N(first, second) {
   a = SUB_NDN_N(a, col, b);
   return a;
 }
+
+function DCF_NN_N(first, second) {
+  let a = new Natural(first.toString());
+  let b = new Natural(second.toString());
+  if(COM_NN_D(a, b) == 1) {
+    b = new Natural(first.toString());
+    a = new Natural(second.toString());
+  }
+  while (MOD_NN_N(a,b) != 0) {
+    if (COM_NN_D(a, b) == 2) {
+      a = SUB_NN_N(a, b);
+    } else if (COM_NN_D(a, b) == 1) {
+      b = SUB_NN_N(b, a);
+    }
+  }
+  return a;
+}
