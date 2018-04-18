@@ -7,16 +7,9 @@ class Natural {
         return this.digits.slice().reverse().join('');
     }
     strip() {
-		let i
-		if(this.digits[0] == 0){
-		 i = 2
+        while (this.digits[this.digits.length] == 0 && this.digits.length > 1) {
+			this.digits.length--;			
 		}
-		else
-		{
-		i = 1
-		}
-        while (this.digits[this.digits.length - i] == 0)
-        this.digits.length--
         return this;
 	}
 	static get zero() {
