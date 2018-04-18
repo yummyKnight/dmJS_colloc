@@ -66,7 +66,7 @@ function SUB_NN_N(first, second) {
 	let a = new Natural(first.toString()) 
 	let b = new Natural(second.toString()) 
 	if(COM_NN_D(a, b) == 0) 
-		return 0; 
+		return Natural.zero; 
 	else if(COM_NN_D(a, b) == 1) { 
 			b = new Natural(first.toString()) 
 			a = new Natural(second.toString()) 
@@ -107,8 +107,9 @@ function MUL_ND_N(first, b) {
 }
 
 function MUL_Nk_N(first, k) {
+	first = first.toString();
 	if(first == 0)
-		return 0;
+		return Natural.zero;
 	for(let i = 0; i < k; i++)
 		first += 0;
 	first = new Natural(first);
