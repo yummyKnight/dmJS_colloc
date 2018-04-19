@@ -144,3 +144,20 @@ function GCF_NN_N(first, second) {
   }
   return a;
 }
+function NZER_N_B(num)
+{
+num = new Natural(num.toString())
+// if(num === Natural.zero)
+if(num.digits.length==1 && num.digits[0]==0)
+{return true;}
+else
+{return false;}
+}
+function LCM_NN_N(first, second)
+{
+let a,b,c;
+a = UL_NN_N(first, second);
+b = GCF_NN_N(first, second);
+c = DIV_NN_N(a,b);
+return c;
+}
