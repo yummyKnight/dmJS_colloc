@@ -17,7 +17,7 @@ class Polynome {
             }
         }
         monomes_split.push(string);
-        console.log(monomes_split);
+        // console.log(monomes_split);
         monomes = monomes_split.map((i) => {
                              // Process monomes
                             let pair;
@@ -25,6 +25,7 @@ class Polynome {
                             if (i[0] == '+') {
                                 i = i.slice(1);
                             }
+                            console.log(i);
                             if (i.indexOf('x') != -1) {
                                 if (i.indexOf('^') != -1) {
                                     pair = i.split('x');
@@ -35,22 +36,23 @@ class Polynome {
                                     pair = [i, '^0']
                             }
                             // Form pair of coeffs
-                            pair[0] = new Rational(pair[0]);
+                            pair[0] = pair[0].length ? new Rational(pair[0]) : new Rational("1");
                             pair[1] = new Natural(pair[1].slice(1))
                             // console.log(pair)
                             return pair;
                          });
-        // Store monomes in object
+        // Store monomes in Object
         this.monomes = {}
         for (const monome of monomes) {
             this.monomes['' + monome[1]] = monome[0];
         }
     }
     toString() {
+        this.deleteZero();
         let result = ''
         // Form string with '+' and '-'
-        for (let i of Object.keys(this.monomes)){
-            result += this.monomes[i].numerator.isNegative ? '' : ' + ';
+        for (let i of this.sortedDegs){
+            result += this.monomes[i].numerator.isNegative ? '' : '+';
             result += i == '0' ? `${this.monomes[i]}` : `${this.monomes[i]}x^${i}`;
         }
         // Strip '+' and trim string
@@ -181,4 +183,17 @@ function MUL_Pxk_P(poly, num)
         delete poly.monomes[i];
     }
     return poly;
+}
+
+function DER_P_P(poly) {
+    let res = Polynome.zero;
+    for (let i of Object.keys(poly.monomes)) {
+        let newDeg = SUB_NN_N(i, new Natural("1"));
+        console.log(i);
+        if (i != "0") {
+            console.log(`Adding to ${newDeg} value ${poly.monomes[i]}`);
+            res.monomes[newDeg] = poly.monomes[i];
+        }
+    }
+    return res;
 }
