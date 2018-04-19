@@ -148,11 +148,25 @@ function DIV_NN_Dk(first, second) {
     }
     return i;
 }
-
-function DIV_NN_N(first, second) {
-    
+function MUL_NN_N(first, second){ 
+	let result = new Natural(0); 
+	for(let i=0;i<second.length;i++){ 
+	let cc = MUL_ND_N(first, second[i]); 
+	cc = MUL_Nk_N(cc, second.length-i-1); 
+	result = ADD_NN_N(result, cc); 
+	} 
+	return result
 }
-
+function DIV_NN_N(first, second) { 
+	let result = new Natural(0); 
+	let cc = new Natural(first); 
+	do{ 
+	let dd = DIV_NN_Dk(cc, second); 
+	result = ADD_NN_N(result, dd); 
+	cc = SUB_NDN_N(cc, dd, MUL_ND_N(second, dd)); 
+	}while (COM_NN_D(cc, second)!=1); 
+	return result 
+	}
 function MOD_NN_N(first, second) {
 	let a = new Natural(first.toString())
 	let b = new Natural(second.toString())
