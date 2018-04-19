@@ -197,3 +197,7 @@ function DER_P_P(poly) {
     }
     return res;
 }
+function LED_P_Q(poly)
+{   
+   return new Rational(poly.monomes[DEG_P_N(poly)].toString());
+}

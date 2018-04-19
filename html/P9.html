@@ -1,12 +1,16 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-        <title>Блочная верстка</title>
+<meta http-equiv=content-type content="text/html; charset=utf-8">
+<title>Блочная верстка</title>
 <link rel="stylesheet" href="../css/menu-style.css">
 <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all">
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-
+<script src="../js/integer.js"></script>
+<script src="../js/natural.js"></script>
+<script src="../js/rational.js"></script>
+<script src="../js/polynome.js"></script>
 </head>
+<body>
 <body>
 
 
@@ -107,16 +111,11 @@
 Пример ввода многочлена: 2x^43+6/7x^12+32
 <br>
 <FORM name="form1">
-<p>Введите первый многочлен:    <input type="text" size=70  name="st1"></p>
-<p>Введиет второй многочлен:  <input type="text" size=70 name="st2"></p>
+<p>Введите первый многочлен:    <input type="text" size=70  name="st1" id="first"></p>
+<p>Введиет второй многочлен:  <input type="text" size=70 name="st2" id="second"></p>
 <font color = "610B5E">Результат</font>
-<input type="button" value=Вычислить onClick="care(form1)"> 
-<script language="JavaScript">
-<!--//          
-
-//-->
-</script> 
-<input type="text" size=70 name="res" >
+<input type="button" value=Вычислить onClick="handle(DIV_PP_P)"> 
+<input type="text" size=70 name="res" id="result">
 <input type="reset" value=Отменить>
 </FORM>
 </font>
@@ -124,5 +123,6 @@
 <div id="clear"></div>
 <div id="footer"> <font color = "FFFFFF"><p> BigDigit project 2018 ©</p></font> </div>
 </div>
+<script src="js/handler.js"></script>
 </body>
 </html>
