@@ -17,7 +17,13 @@ class Rational {
         return new Rational("0/1");
     }
 }
-
+function RED_Q_Q(first)
+{  // find NOD and / for numerator and denominator
+    let NOD = GCF_NN_N(first.numerator.num,first.denominator); // natural
+    first.numerator = DIV_ZZ_Z(first.numerator,TRANS_N_Z(NOD)); //integer
+    first.denominator = DIV_NN_N(first.denominator,NOD);//natural
+    return first;
+}
 function TRANS_Z_Q(num)
 {
     return new Rational(num.toString());
