@@ -9,7 +9,7 @@ class Polynome {
         let monomes_split = [];
         let string = '';
         for (let i = 0; i < monomes.length; i++) {
-            if (monomes[i] == '+' || monomes[i] == '-') {
+            if ((monomes[i] == '+' || monomes[i] == '-') && i) {
                 monomes_split.push(string);
                 string = monomes[i];
             } else {
@@ -17,7 +17,7 @@ class Polynome {
             }
         }
         monomes_split.push(string);
-        // console.log(monomes_split);
+        console.log(monomes_split);
         monomes = monomes_split.map((i) => {
                              // Process monomes
                             let pair;
