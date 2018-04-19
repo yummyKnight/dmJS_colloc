@@ -62,13 +62,16 @@ function SUB_QQ_Q(num1, num2)
 {
   var a = new Rational(num1.toString());
   var b = new Rational(num2.toString());
-  if(COM_NN_D(a.denominator, b.denominator) == 0) {//Если знаменатели равны
-    a.numerator = SUB_ZZ_Z(a.numerator,b.numerator);//Вычитаем числители
-  }else{
-      var lcm = LCM_NN_N(a.denominator,b.denominator);//Находим НОК
-      a.numerator = MUL_ZZ_Z(a.numerator,DIV_NN_N(lcm, a.denominator)); //Умножаем числитель первого числа на НОК
-      b.numerator = MUL_ZZ_Z(b.numerator,DIV_NN_N(lcm, b.denominator));//Умножаем числитель второго числа на НОК
-      a.numerator = SUB_ZZ_Z(a.numerator,b.numerator)// Складываем
-      a.denominator = lcm;
-  }
+  b.numerator = MUL_ZM_Z(b.numerator);
+  let res = ADD_QQ_Q(a,b);
+  return res;
+//   if(COM_NN_D(a.denominator, b.denominator) == 0) {//Если знаменатели равны
+//     a.numerator = SUB_ZZ_Z(a.numerator,b.numerator);//Вычитаем числители
+//   }else{
+//       var lcm = LCM_NN_N(a.denominator,b.denominator);//Находим НОК
+//       a.numerator = MUL_ZZ_Z(a.numerator,DIV_NN_N(lcm, a.denominator)); //Умножаем числитель первого числа на НОК
+//       b.numerator = MUL_ZZ_Z(b.numerator,DIV_NN_N(lcm, b.denominator));//Умножаем числитель второго числа на НОК
+//       a.numerator = SUB_ZZ_Z(a.numerator,b.numerator)// Складываем
+//       a.denominator = lcm;
+//   }
 }
