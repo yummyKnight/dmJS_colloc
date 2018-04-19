@@ -162,7 +162,7 @@ function  SUB_PP_P(first, second)
 {   // change sign in every coef
     for(let i of Object.keys(second.monomes))
     {   
-        second.monomes[i].numerator.isNegative = second.monomes[i].numerator.isNegative ? false : true;
+        second.monomes[i].numerator.isNegative = !second.monomes[i].numerator.isNegative;
     }
     return ADD_PP_P(first,second);
 }
@@ -200,4 +200,15 @@ function DER_P_P(poly) {
 function LED_P_Q(poly)
 {   
    return new Rational(poly.monomes[DEG_P_N(poly)].toString());
+}
+
+
+function NMR_P_P(poly) {
+    return DIV_PP_P(
+            poly,
+            GCD_PP_P(
+                poly,
+                DER_P_P(poly)
+                )
+        );
 }
