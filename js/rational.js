@@ -81,3 +81,11 @@ function SUB_QQ_Q(num1, num2)
 //       a.denominator = lcm;
 //   }
 }
+function DIV_QQ_Q(num1, num2) { 
+    let result = new Rational('1/1'); 
+    result.numerator = MUL_ZZ_Z(num1.numerator, TRANS_Z_N(num2.numerator)); 
+    result.denominator = MUL_NN_N(num1.denominator, ABS_Z_N(num2.denominator)); 
+    if (POZ_Z_D(num2.numerator) == 1) 
+    result.numerator = MUL_ZM_Z(result.numerator); 
+    return result; 
+    }
