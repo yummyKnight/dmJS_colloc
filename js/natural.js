@@ -116,6 +116,35 @@ function MUL_Nk_N(first, k) {
 	return first;
 }
 
+function SUB_NDN_N(first, num, second) {
+    // Here check for first - second * num > 0, else throw error
+    return SUB_NN_N(first, MUL_ND_N(second, num));
+}
+
+function DIV_NN_Dk(first, second) {
+    const secondLength = second.digits.length;
+    const firstLength = first.digits.length;
+	let temp = first.toString().slice(0, secondLength)
+    if (COM_NN_D(new Natural(temp), second) == 1) {
+        // If second number is greater than first digits of first number, then take one more
+        temp = first.toString().slice(0, secondLength + 1);
+    }
+	temp = new Natural(temp);
+	console.log(temp);
+    let i = 0;
+    while (COM_NN_D(temp, second) != 1) {
+        // While temp is greater or equal than second
+		i++;
+		console.log(i);
+        temp = SUB_NN_N(temp, second);
+    }
+    return i;
+}
+
+function DIV_NN_N(first, second) {
+    
+}
+
 function MOD_NN_N(first, second) {
 	let a = new Natural(first.toString())
 	let b = new Natural(second.toString())

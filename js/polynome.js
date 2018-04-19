@@ -51,7 +51,7 @@ class Polynome {
         // Form string with '+' and '-'
         for (let i of Object.keys(this.monomes)){
             result += this.monomes[i].numerator.isNegative ? '' : ' + ';
-            result += i == '0' ? `${this.monomes[i]}` : ` ${this.monomes[i]}x^${i} `;
+            result += i == '0' ? `${this.monomes[i]}` : `${this.monomes[i]}x^${i}`;
         }
         // Strip '+' and trim string
         console.log(result);
@@ -77,14 +77,12 @@ class Polynome {
     // idk why not working
     deleteZero()
     {   
-        if(Object.keys(this.monomes).length != 0)
-        {
         for (let i of Object.keys(this.monomes))
         {
-            if(this.monomes[i].numerator == Integer.zero)
-                delete this.monomes[i];
-        }
-    }   
+            if (COM_NN_D(this.monomes[i].numerator.num.strip(), Natural.zero) == 0) {
+                delete this.monomes[i];                
+            }
+        }   
         return this;
     }
 }
@@ -148,7 +146,7 @@ function ADD_PP_P(first, second)
 for(let i of Object.keys(second.monomes))
 {  
     if(first.monomes[i] !== undefined)
-    {    // if degree is exist, sum coef
+    {    // if degree exists, sum coef
        first.monomes[i] = ADD_QQ_Q(first.monomes[i],second.monomes[i])
     }
     else
