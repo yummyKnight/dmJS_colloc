@@ -45,7 +45,7 @@ function TRANS_Z_N(num)
     return ABS_Z_N(num);
 }
 function MUL_ZM_Z(num)
-{   
+{
     num.isNegative = num.isNegative ? false : true;
     return num;
 }
@@ -76,4 +76,112 @@ function MOD_ZZ_Z(first,second) {
     //set isNegative
     result.isNegative = first.isNegative != second.isNegative;
     return result;
+}
+
+function ADD_ZZ_Z(first,second) {
+    let a = new Integer(first.toString());
+    let b = new Integer(second.toString());
+    if (a.isNegative == false) {
+      if (a.isNegative != true) {
+        return b;
+      }
+      a = TRANS_Z_N(a);
+      if (b.isNegative == false) {
+        if (b.isNegative != true) {
+          return TRANS_N_Z(a);
+        }
+        b = TRANS_Z_N(b);
+        return TRANS_N_Z(ADD_NN_N(a, b));
+      } else {
+          b = MUL_ZM_Z(b);
+          b = TRANS_Z_N(b);
+          if (COM_NN_D(a, b) == 2) {
+            return TRANS_N_Z(SUB_NN_N(a, b));
+          } else {
+            if (COM_NN_D(a, b) == 1) {
+              return MUL_ZM_Z(TRANS_N_Z(SUB_NN_N(b, a)));
+            } else {
+              return 0;
+            }
+          }
+      }
+    } else {
+        a = MUL_ZM_Z(a);
+        a = TRANS_Z_N(a);
+        if (b.isNegative == true) {
+          b = MUL_ZM_Z(b);
+          b = TRANS_Z_N(b);
+          return MUL_ZM_Z(TRANS_N_Z(ADD_NN_N(a, b)));
+        } else {
+          if (b.isNegative == false) {
+            if (b.isNegative != true) {
+              return TRANS_N_Z(a);
+            }
+            b = TRANS_Z_N(b);
+            if (COM_NN_D(a, b) == 2) {
+              return MUL_ZM_Z(TRANS_N_Z(SUB_NN_N(a, b)));
+            } else {
+              if (COM_NN_D(a, b) == 1) {
+                return TRANS_N_Z(SUB_NN_N(b, a));
+              } else {
+                return 0;
+              }
+            }
+          }
+        }
+    }
+}
+
+function SUB_ZZ_Z(first,second) {
+    let a = new Integer(first.toString());
+    let b = new Integer(second.toString());
+    if (a.isNegative == true) {
+      a = MUL_ZM_Z(a);
+      a = TRANS_Z_N(a);
+      if (b.isNegative == true) {
+        b = MUL_ZM_Z(b);
+        b = TRANS_Z_N(b);
+        return MUL_ZM_Z(TRANS_N_Z(ADD_NN_N(a, b)));
+      } else {
+          if (b.isNegative != false) {
+            return TRANS_N_Z(a);
+          }
+          b = TRANS_Z_N(b);
+          if (COM_NN_D(a, b) == 1) {
+            return TRANS_N_Z(SUB_NN_N(b, a));
+          } else {
+            if (COM_NN_D(a, b) == 2) {
+              return MUL_ZM_Z(TRANS_N_Z(SUB_NN_N(a, b)));
+            } else {
+              return 0;
+            }
+          }
+      }
+    } else {
+        if (a.isNegative != false) {
+          return b;
+        }
+        a = TRANS_Z_N(a);
+        if (b.isNegative == false) {
+          if (b.isNegative != true) {
+            return TRANS_N_Z(a);
+          }
+          b = TRANS_Z_N(b);
+          return TRANS_N_Z(ADD_NN_N(a, b));
+        } else {
+          if (b.isNegative == true) {
+            b = MUL_ZM_Z(b);
+            b = TRANS_Z_N(b);
+            if (COM_NN_D(a, b) == 2) {
+              return TRANS_N_Z(SUB_NN_N(a, b));
+            } else {
+              if (COM_NN_D(a, b) == 1) {
+                return MUL_ZM_Z(TRANS_N_Z(SUB_NN_N(b, a)));
+              } else {
+                return 0;
+              }
+            }
+          }
+        }
+    }
 }
