@@ -7,7 +7,7 @@ class Natural {
         return this.digits.slice().reverse().join('');
     }
     strip() {
-        while (this.digits[this.digits.length] == 0 && this.digits.length > 1) {
+        while (this.digits[this.digits.length - 1] == 0 && this.digits.length > 1) {
 			this.digits.length--;
 		}
         return this;
@@ -73,12 +73,12 @@ function ADD_NN_N(first, second) {
 function SUB_NN_N(first, second) {
 	let a = new Natural(first.toString())
 	let b = new Natural(second.toString())
-	if(COM_NN_D(a, b) == 0)
+	if(COM_NN_D(a, b) == 0) {
 		return Natural.zero;
-	else if(COM_NN_D(a, b) == 1) {
-			b = new Natural(first.toString())
-			a = new Natural(second.toString())
-		}
+	} else if (COM_NN_D(a, b) == 1) {
+		// This branch is for testing purpose
+		return Natural.zero;
+	}
 	for(let i=0; i < a.digits.length; i++) {
 		if(i < (a.digits.length - 1)) {
 			a.digits[i + 1]--;
@@ -120,13 +120,12 @@ function MUL_Nk_N(first, k) {
 		return Natural.zero;
 	for(let i = 0; i < k; i++)
 		first += 0;
-	first = new Natural(first);
-	return first;
+	return new Natural(first);
 }
 
 function SUB_NDN_N(first, num, second) {
     // Here check for first - second * num > 0, else throw error
-    return SUB_NN_N(first, MUL_ND_N(second, num));
+    return SUB_NN_N(first, MUL_ND_N(second, new Natural('' + num)));
 }
 
 function DIV_NN_Dk(first, second) {
@@ -138,62 +137,65 @@ function DIV_NN_Dk(first, second) {
         temp = first.toString().slice(0, secondLength + 1);
     }
 	temp = new Natural(temp);
-	console.log(temp);
+	// console.log(`${temp} - temp\n${second}`);
     let i = 0;
     while (COM_NN_D(temp, second) != 1) {
         // While temp is greater or equal than second
 		i++;
 		console.log(i);
         temp = SUB_NN_N(temp, second);
+        // console.log(`temp is ${temp} after ${i}-th substraction`);
     }
     return i;
 }
+
 function MUL_NN_N(first, second){ 
-	let result = new Natural(0); 
-	for(let i=0;i<second.length;i++){ 
-	let cc = MUL_ND_N(first, second[i]); 
-	cc = MUL_Nk_N(cc, second.length-i-1); 
-	result = ADD_NN_N(result, cc); 
+	let result = Natural.zero;
+	for(let i = 0;i < second.digits.length;i++){ 
+		let cc = MUL_ND_N(first, second.digits[i]); 
+		cc = MUL_Nk_N(cc, i); 
+		result = ADD_NN_N(result, cc); 
 	} 
 	return result
 }
+
 function DIV_NN_N(first, second) { 
-	let result = new Natural(0); 
-	let cc = new Natural(first); 
-	do{ 
-	let dd = DIV_NN_Dk(cc, second); 
-	result = ADD_NN_N(result, dd); 
-	cc = SUB_NDN_N(cc, dd, MUL_ND_N(second, dd)); 
-	}while (COM_NN_D(cc, second)!=1); 
-	return result 
+	if (COM_NN_D(first, second) == 1) {
+		return Natural.zero;
+	} else {
+		let result = ''; 		
+		do { 
+			let dd = DIV_NN_Dk(first, second); 
+			result += String(dd); 
+			let cc = MUL_ND_N(second, dd);
+			let ff = COM_NN_D(first, MUL_Nk_N(cc, first.digits.length - cc.digits.length)) == 1? 
+					MUL_Nk_N(cc, first.digits.length - cc.digits.length - 1) : 
+					MUL_Nk_N(cc, first.digits.length - cc.digits.length);
+			console.log(`${first}, ${ff}`);
+			first = SUB_NN_N(first, ff);
+			console.log(`${first} is first`); 
+		} while (COM_NN_D(first, second) != 1);
+		return new Natural(result);	
 	}
-function MOD_NN_N(first, second) {
-	let a = new Natural(first.toString())
-	let b = new Natural(second.toString())
-	if(COM_NN_D(a, b) == 1) {
-		b = new Natural(first.toString())
-		a = new Natural(second.toString())
-	}
-  let col = DIV_NN_N(a, b);
-  a = SUB_NDN_N(a, col, b);
-  return a;
+	 
 }
 
-function GCF_NN_N(first, second) {
-  let a = new Natural(first.toString());
-  let b = new Natural(second.toString());
-  if(COM_NN_D(a, b) == 1) {
-    b = new Natural(first.toString());
-    a = new Natural(second.toString());
-  }
-  while (MOD_NN_N(a,b) != 0) {
+function MOD_NN_N(first, second) {
+	if(COM_NN_D(first, second) == 1) {
+		return first;
+	}
+  return SUB_NN_N(first, MUL_NN_N(DIV_NN_N(first, second), second));
+}
+
+function GCF_NN_N(a, b) {
+  while (COM_NN_D(MUL_NN_N(a,b), Natural.zero) != 0) {
     if (COM_NN_D(a, b) == 2) {
-      a = SUB_NN_N(a, b);
-    } else if (COM_NN_D(a, b) == 1) {
-      b = SUB_NN_N(b, a);
+      a = MOD_NN_N(a, b);
+    } else {
+      b = MOD_NN_N(b, a);
     }
   }
-  return a;
+  return ADD_NN_N(a, b);
 }
 
 function LCM_NN_N(first, second)
