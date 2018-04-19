@@ -192,7 +192,11 @@ function GCF_NN_N(first, second) {
       b = SUB_NN_N(b, a);
     }
   }
-  return a;
+  if (COM_NN_D(a, b) != 0) {
+    COM_NN_D(a, b) == 2 ? return a: return b;
+  } else {
+    return a;
+  }
 }
 
 function LCM_NN_N(first, second)
