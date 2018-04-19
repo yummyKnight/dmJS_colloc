@@ -171,9 +171,8 @@ function MOD_NN_N(first, second) {
 	let a = new Natural(first.toString())
 	let b = new Natural(second.toString())
 	if(COM_NN_D(a, b) == 1) {
-		b = new Natural(first.toString())
-		a = new Natural(second.toString())
-	}
+	   return a;
+  }
   let col = DIV_NN_N(a, b);
   a = SUB_NDN_N(a, col, b);
   return a;
