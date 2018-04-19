@@ -181,10 +181,21 @@ function DIV_NN_N(first, second) {
 }
 
 function MOD_NN_N(first, second) {
+<<<<<<< HEAD
 	if(COM_NN_D(first, second) == 1) {
 		return first;
 	}
   return SUB_NN_N(first, MUL_NN_N(DIV_NN_N(first, second), second));
+=======
+	let a = new Natural(first.toString())
+	let b = new Natural(second.toString())
+	if(COM_NN_D(a, b) == 1) {
+	   return a;
+  }
+  let col = DIV_NN_N(a, b);
+  a = SUB_NDN_N(a, col, b);
+  return a;
+>>>>>>> d68b4f4434f9f6ff4d132ce309ed370a95a1cb3a
 }
 
 function GCF_NN_N(a, b) {
