@@ -91,6 +91,12 @@ describe("MOD_NN_N", function() {
     it("12 % 12 = 0", function(){
         assert.equal(MOD_NN_N(new Natural("12"), new Natural("12")), "0");
     });
+    it("12312447685764 % 8 = 4", function(){
+        assert.equal(MOD_NN_N(new Natural("12312447685764"), new Natural("8")), "4");
+    });
+    it("316474923658743 % 3215 = 1778", function(){
+        assert.equal(MOD_NN_N(new Natural("316474923658743"), new Natural("3215")), 1778);
+    });
 });
 describe("GCF_NN_N", function() {
     it("8253467589 на 1554, НОД = 3", function(){
@@ -145,5 +151,16 @@ describe("DIV_NN_N", function() {
     });
     it("1 / 6 = 0", function(){
         assert.equal(DIV_NN_N(new Natural("1"), new Natural("6")),0);
+    });
+});
+describe("DIV_NN_Dk", function() {
+    it("42 / 42 ^ 42", function(){
+        assert.equal(DIV_NN_Dk(new Natural ("42"), new Natural("42")),"1");
+    });
+    it("123 20", function(){
+        assert.equal(DIV_NN_Dk(new Natural("123"), new Natural("20")), "6");
+    });
+    it("123 33", function(){
+        assert.equal(DIV_NN_Dk(new Natural("123"), new Natural("33")),"3");
     });
 });
