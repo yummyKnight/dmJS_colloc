@@ -37,6 +37,6 @@ describe("SUB_PP_P", function()
     assert.equal(SUB_PP_P(new Polynome ("x^4-3x^2+1"), new Polynome ("x^4-5x^2+2")), "+2/1x^2-1/1");
   });
   it("(x^100 + 1) - (x + 100) = x^100 - x - 99", function() {
-    assert.equal(SUB_PP_P(new Polynome ("(x^100 + 1"), new Polynome ("x + 100")).toString(),"+1/1x^100-1/1x-99/1");
+    assert.equal(SUB_PP_P(new Polynome ("x^100 + 1"), new Polynome ("x + 100")).toString(),"+1/1x^100-1/1x^1-99/1");
   });
 });
