@@ -66,7 +66,7 @@ function ADD_QQ_Q (num1, num2)
     a.numerator = ADD_ZZ_Z(a.numerator,b.numerator)// Складываем
     a.denominator = lcm;
   }
-  return a;
+  return RED_Q_Q(a);
 }
 
 function SUB_QQ_Q(num1, num2)
