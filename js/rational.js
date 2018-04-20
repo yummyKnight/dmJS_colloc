@@ -60,8 +60,8 @@ function ADD_QQ_Q (num1, num2)
     a.numerator = ADD_ZZ_Z(a.numerator,b.numerator);//Складываем числители
   }else{//иначе
     let lcm = LCM_NN_N(a.denominator,b.denominator);//Находим НОК
-    a.numerator = MUL_ZZ_Z(a.numerator,DIV_NN_N(lcm, a.denominator)); //Умножаем числитель первого числа на НОК/знаменатель первого числа
-    b.numerator = MUL_ZZ_Z(b.numerator,DIV_NN_N(lcm, b.denominator));//Умножаем числитель второго числа на НОК/знаменатель первого числа
+    a.numerator = MUL_ZZ_Z(a.numerator,TRANS_N_Z(DIV_NN_N(lcm, a.denominator))); //Умножаем числитель первого числа на НОК/знаменатель первого числа
+    b.numerator = MUL_ZZ_Z(b.numerator,TRANS_N_Z(DIV_NN_N(lcm, b.denominator)));//Умножаем числитель второго числа на НОК/знаменатель первого числа
     a.numerator = ADD_ZZ_Z(a.numerator,b.numerator)// Складываем
     a.denominator = lcm;
   }

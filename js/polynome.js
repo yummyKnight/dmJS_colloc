@@ -153,10 +153,10 @@ for(let i of Object.keys(second.monomes))
     }
     else
     {   // else creat such degree and copy coef from factor
-        first.monomes[i] = second.monome[i];
+        first.monomes[i] = second.monomes[i];
     }
 }
-    return first
+    return first;
 }
 function  SUB_PP_P(first, second)
 {   // change sign in every coef
