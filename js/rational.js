@@ -66,7 +66,7 @@ function ADD_QQ_Q (num1, num2)
     a.numerator = ADD_ZZ_Z(a.numerator,b.numerator)// Складываем
     a.denominator = lcm;
   }
-  return a;
+  return RED_Q_Q(a);
 }
 
 function SUB_QQ_Q(num1, num2)
@@ -91,5 +91,5 @@ function DIV_QQ_Q(num1, num2) {
     result.numerator = MUL_NN_N(ABS_Z_N(num1.numerator),num2.denominator); 
     result.denominator = MUL_NN_N(num1.denominator, TRANS_Z_N(num2.numerator)); 
     result.numerator.isNegative = num1.numerator.isNegative * num2.numerator.isNegative;
-    return result; 
+    return RED_Q_Q(result); 
     }
