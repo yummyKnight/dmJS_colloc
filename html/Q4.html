@@ -1,201 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-body {
-    margin:0px;
-    padding:0px;
-    font: 14px 'Verdana';
-}
-ul1 {
-    list-style: none;
-    display: block;
-    margin:0px;
-    padding:0px;
-}
-ul:after {
-    display: block;
-    float: none;
-    content: ' ';
-    clear: both;
-}
-ul.mmenuu1 > li {
-    float: left;
-    position: relative;
-}
-ul.mmenuu1 > li > a {
-    display: block;
-    color: #fff;
-    padding: 5px;
-	width: 185px;
-    text-decoration: none;
-    background-color: #da570f;
-}
-ul.mmenuu1 > li > a:hover {
-    background-color: #eb9316;
-}
-ul.ssubmenuu1 {
-    position: absolute;
-    width: 700px;
-    top: 0px;
-    left:200px;
-    display: none;
-    background-color: white;
-}
-ul.ssubmenuu1 > li {
-    display: block;
-}
-ul.ssubmenuu1 > li > a {
-    display: block;
-    text-decoration: none;
-    padding: 8px;
-    color: #ffffff;
-    background-color: #da570f;
-}
-ul.ssubmenuu1 > li > a:hover {
-    background-color: #eb9316;
-    text-decoration: underline;
-}
-ul.mmenuu1 > li:hover > ul.ssubmenuu1 {
-    display: block;
-}
-
-
-
-
-
-ul.mmenuu2 > li {
-    float: left;
-    position: relative;
-}
-ul.mmenuu2 > li > a {
-    display: block;
-    color: #fff;
-    padding: 5px;
-	width: 185px;
-    text-decoration: none;
-    background-color: #da570f;
-}
-ul.mmenuu2 > li > a:hover {
-    background-color: #eb9316;
-}
-ul.ssubmenuu2 {
-    position: absolute;
-    width: 700px;
-    top: -59px;
-    left:200px;
-    display: none;
-    background-color: white;
-}
-ul.ssubmenuu2 > li {
-    display: block;
-}
-ul.ssubmenuu2 > li > a {
-    display: block;
-    text-decoration: none;
-    padding: 8px;
-    color: #ffffff;
-    background-color: #da570f;
-}
-ul.ssubmenuu2 > li > a:hover {
-    background-color: #eb9316;
-    text-decoration: underline;
-}
-ul.mmenuu2 > li:hover > ul.ssubmenuu2 {
-    display: block;
-}
-
-
-
-
-ul.mmenuu3 > li {
-    float: left;
-    position: relative;
-}
-ul.mmenuu3 > li > a {
-    display: block;
-    color: #fff;
-    padding: 5px;
-	width: 185px;
-    text-decoration: none;
-    background-color: #da570f;
-}
-ul.mmenuu3 > li > a:hover {
-    background-color: #eb9316;
-}
-ul.ssubmenuu3 {
-    position: absolute;
-    width: 700px;
-    top: -118px;
-    left:200px;
-    display: none;
-    background-color: white;
-}
-ul.ssubmenuu3 > li {
-    display: block;
-}
-ul.ssubmenuu3 > li > a {
-    display: block;
-    text-decoration: none;
-    padding: 8px;
-    color: #ffffff;
-    background-color: #da570f;
-}
-ul.ssubmenuu3 > li > a:hover {
-    background-color: #eb9316;
-    text-decoration: underline;
-}
-ul.mmenuu3 > li:hover > ul.ssubmenuu3 {
-    display: block;
-}
-
-
-
-
-ul.mmenuu4 > li {
-    float: left;
-    position: relative;
-}
-ul.mmenuu4 > li > a {
-    display: block;
-    color: #fff;
-    padding: 5px;
-	width: 185px;
-    text-decoration: none;
-    background-color: #da570f;
-}
-ul.mmenuu4 > li > a:hover {
-    background-color: #eb9316;
-}
-ul.ssubmenuu4 {
-    position: absolute;
-    width: 700px;
-    top: -177px;
-    left:200px;
-    display: none;
-    background-color: white;
-}
-ul.ssubmenuu4 > li {
-    display: block;
-}
-ul.ssubmenuu4 > li > a {
-    display: block;
-    text-decoration: none;
-    padding: 8px;
-    color: #ffffff;
-    background-color: #da570f;
-}
-ul.ssubmenuu4 > li > a:hover {
-    background-color: #eb9316;
-    text-decoration: underline;
-}
-ul.mmenuu4 > li:hover > ul.ssubmenuu4 {
-    display: block;
-}
-</style>
 <meta http-equiv=content-type content="text/html; charset=utf-8">
 <title>Блочная верстка</title>
-<link href="styles.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="../css/menu-style.css">
+<link href="../css/styles.css" rel="stylesheet" type="text/css" media="all">
+<script stc="../js/natural.js"></script>
+<script stc="../js/integer.js"></script>
+<script stc="../js/rational.js"></script>
 </head>
 <body>
 
@@ -296,15 +108,10 @@ ul.mmenuu4 > li:hover > ul.ssubmenuu4 {
 <h2> &nbspПреобразование дробного в целое (если знаменатель равен 1).</h2>
 <br>
 <FORM name="form1">
-<p>Введите дробь:    <input type="text" size=10  name="st1"></p>
+<p>Введиет дробь:  <input type="text" size=10  name="st1" id="first"></p>
 <font color = "610B5E">Результат</font>
-<input type="button" value=Вычислить onClick="care(form1)"> 
-<script language="JavaScript">
-<!--//          
-
-//-->
-</script> 
-<input type="text" size=10 name="res" >
+<input type="button" value=Вычислить onClick="handle(RED_Q_Q)"> 
+<input type="text" size=10 id="result" >
 <input type="reset" value=Отменить>
 </FORM>
 </font>
@@ -312,5 +119,6 @@ ul.mmenuu4 > li:hover > ul.ssubmenuu4 {
 <div id="clear"></div>
 <div id="footer"> <font color = "FFFFFF"><p> BigDigit project 2018 ©</p></font> </div>
 </div>
+<script src="js/handler.js"></script>
 </body>
 </html>
