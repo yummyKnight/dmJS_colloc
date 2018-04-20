@@ -79,47 +79,36 @@ function MOD_ZZ_Z(first,second) {
 }
 
 function ADD_ZZ_Z(first,second) {
-  let a = new Integer(first.toString());
-  let b = new Integer(second.toString());
-  var aNeg = POZ_Z_D(a);
-  var bNeg = POZ_Z_D(b);
-  if (aNeg == 0) {
-    return b;
-  }
-  if (bNeg == 0) {
-    return a;
-  }
-  a = ABS_Z_N(a);
-  b = ABS_Z_N(b);
-  var com = COM_NN_D(a, b);
-  if ((aNeg == bNeg) && (aNeg == 2)) {
-    return TRANS_N_Z(ADD_NN_N(a, b));
-  }
-  if ((aNeg == bNeg) && (aNeg == 1)) {
-    return MUL_ZM_Z(TRANS_N_Z(ADD_NN_N(a, b)));
-  }
-  if ((aNeg == 2) && (bNeg == 1)) {
-    if (com == 2) {
-      return TRANS_N_Z(SUB_NN_N(a, b));
+    let result = Integer.zero;
+    if (first.isNegative == second.isNegative) {
+        result.isNegative = first.isNegative;
+        result.num = ADD_NN_N(first.num, second.num);
+    } else if (!first.isNegative) {
+        // 1 - 2 +
+        let compare = COM_NN_D(first.num, second.num);
+        if (compare == 1) {
+            // first < second
+            result.isNegative = true;
+            result.num = SUB_NN_N(second.num, first.num);
+        } else if (compare == 2) {
+            // first > second
+            result.isNegative = false;
+            result.num = SUB_NN_N(first.num, second.num);
+        }
+    } else {
+        // - 1 + 2
+        let compare = COM_NN_D(first.num, second.num);
+        if (compare == 1) {
+            // first < second
+            result.isNegative = false;
+            result.num = SUB_NN_N(second.num, first.num);
+        } else if (compare == 2) {
+            // first > second
+            result.isNegative = true;
+            result.num = SUB_NN_N(first.num, second.num);
+        }
     }
-    if (com == 1) {
-      return MUL_ZM_Z(TRANS_N_Z(SUB_NN_N(a, b)));
-    }
-    if (com == 0) {
-      return 0;
-    }
-  }
-  if ((aNeg == 1) && (bNeg == 2)) {
-    if (com == 1) {
-      return TRANS_N_Z(SUB_NN_N(b, a));
-    }
-    if (com == 2) {
-      return MUL_ZM_Z(TRANS_N_Z(SUB_NN_N(a, b)));
-    }
-    if (com == 0) {
-      return 0;
-    }
-  }
+    return result;
 }
 
 function SUB_ZZ_Z(first,second) {

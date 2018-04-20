@@ -56,12 +56,13 @@ function ADD_QQ_Q (num1, num2)
 {
     let a = new Rational(num1.toString());
     let b = new Rational(num2.toString());
-  if(COM_NN_D(a.denominator, b.denominator) == 0) {//Если знаменатели равны
-    a.numerator = ADD_ZZ_Z(a.numerator,b.numerator);//Складываем числители
-  }else{//иначе
+    if(COM_NN_D(a.denominator, b.denominator) == 0) {//Если знаменатели равны
+        a.numerator = ADD_ZZ_Z(a.numerator,b.numerator);//Складываем числители
+    } else {//иначе
     let lcm = LCM_NN_N(a.denominator,b.denominator);//Находим НОК
     a.numerator = MUL_ZZ_Z(a.numerator,TRANS_N_Z(DIV_NN_N(lcm, a.denominator))); //Умножаем числитель первого числа на НОК/знаменатель первого числа
     b.numerator = MUL_ZZ_Z(b.numerator,TRANS_N_Z(DIV_NN_N(lcm, b.denominator)));//Умножаем числитель второго числа на НОК/знаменатель первого числа
+    console.log(`anum = ${a.numerator}, bnum = ${b.numerator}`);
     a.numerator = ADD_ZZ_Z(a.numerator,b.numerator)// Складываем
     a.denominator = lcm;
   }
