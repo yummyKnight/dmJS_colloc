@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+
+
 describe("RED_Q_Q", function()
 {
   it("10 / 5 = 2", function() {
@@ -11,22 +12,6 @@ describe("RED_Q_Q", function()
     assert.equal(RED_Q_Q(new Rational ("-100/2")), "-50/1");
   });
 });
-=======
-
-
-// describe("RED_Q_Q", function()
-// {
-//   it("10 / 5 = 2", function() {
-//     assert.equal(RED_Q_Q(new Rational ("10/5")), "2/1");
-//   });
-//   it("231234124 / 33242414 = 115617062 / 16621207", function() {
-//     assert.equal(RED_Q_Q(new Rational ("231234124/33242414")), "115617062/16621207");
-//   });
-//   it("100 / -2 = -50", function() {
-//     assert.equal(RED_Q_Q(new Rational ("100/-2")), "-50/1");
-//   });
-// });
->>>>>>> 80a1f908057dec2ce34beb8a41d87013431a5f91
 
 describe("INT_Q_B", function()
 {
@@ -51,11 +36,7 @@ describe("TRANS_Z_Q", function()
     assert.equal(TRANS_Z_Q(new Integer ("124546351")), "124546351/1");
   });
   it("124546351 => 124546351/1", function() {
-<<<<<<< HEAD
-    assert.equal(TRANS_Z_Q(new Integer ("2147159725915")), '2147159725915/1');
-=======
     assert.equal(TRANS_Z_Q(new Integer ("2147159725915")), "2147159725915/1");
->>>>>>> 80a1f908057dec2ce34beb8a41d87013431a5f91
   });
 });
 
@@ -74,16 +55,6 @@ describe("TRANS_Q_Z", function()
 
 describe("ADD_QQ_Q", function()
 {
-<<<<<<< HEAD
-  it("Тест 1 : 3/2 + 11/8 = 23/8", function() {
-    assert.equal(ADD_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), '23/8');
-  });
-  it("Тест 2 : 1/1000 + 54/99 = 6011/11000", function() {
-    assert.equal(ADD_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), '6011/11000');
-  });
-  it("Тест 3 : 833/500 + 653/1000000000 = 1666000653/1000000000", function() {
-    assert.equal(ADD_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),'1666000653/1000000000');
-=======
   it("Тест 1 : 3/2 + 11/8 = 22/8", function() {
     assert.equal(ADD_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), "22/8");
   });
@@ -92,22 +63,12 @@ describe("ADD_QQ_Q", function()
   });
   it("Тест 3 : 833/500 + 653/1000000000 = 1666000653/1000000000", function() {
     assert.equal(ADD_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),"1666000653/1000000000");
->>>>>>> 80a1f908057dec2ce34beb8a41d87013431a5f91
   });
 });
 
 describe("SUB_QQ_Q", function()
 {
   it("Тест 1 : 3/2 - 11/8 = 1/8", function() {
-<<<<<<< HEAD
-    assert.equal(SUB_QQ_Q(new Rational ("3/2"), new Rational ("11/8")), '1/8');
-  });
-  it("Тест 2 : 1/1000 - 54/99 = - 5989/11000", function() {
-    assert.equal(SUB_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), '-5989/11000');
-  });
-  it("Тест 3 : 833/500 - 653/1000000000 = 665999347/1000000000", function() {
-    assert.equal(SUB_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),'665999347/1000000000');
-=======
     assert.equal(SUB_QQ_Q(new Rational ("3/2"), new Rational ("11/8")), "1/8");
   });
   it("Тест 2 : 1/1000 - 54/99 = - 5989/11000", function() {
@@ -115,22 +76,12 @@ describe("SUB_QQ_Q", function()
   });
   it("Тест 3 : 833/500 - 653/1000000000 = 665999347/1000000000", function() {
     assert.equal(SUB_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),"665999347/1000000000");
->>>>>>> 80a1f908057dec2ce34beb8a41d87013431a5f91
   });
 });
 
 describe("MUL_QQ_Q", function()
 {
   it("Тест 1 : 3/2 * 10/8 = 15/8", function() {
-<<<<<<< HEAD
-    assert.equal(MUL_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), '15/8');
-  });
-  it("Тест 2 : 1/1000 * 54/99 = 3/5500", function() {
-    assert.equal(MUL_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), '1/5500');
-  });
-  it("Тест 3 : 833/500 * 653/1000000000 = 543949/5000000000000", function() {
-    assert.equal(MUL_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),'543949/5000000000000');
-=======
     assert.equal(MUL_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), "30/16");
   });
   it("Тест 2 : 1/1000 * 54/99 = 3/5500", function() {
@@ -138,14 +89,12 @@ describe("MUL_QQ_Q", function()
   });
   it("Тест 3 : 833/500 * 653/1000000000 = 543949/5000000000000", function() {
     assert.equal(MUL_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),"543949/5000000000000");
->>>>>>> 80a1f908057dec2ce34beb8a41d87013431a5f91
   });
 });
 
 describe("DIV_QQ_Q", function()
 {
   it("Тест 1 : 3/2 / 10/8 = 24/20", function() {
-<<<<<<< HEAD
     assert.equal(DIV_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), '24/20');
   });
   it("Тест 2 : 1/1000 / 54/99 = 99/54000", function() {
@@ -153,14 +102,6 @@ describe("DIV_QQ_Q", function()
   });
   it("Тест 3 : 833/500 / 653/1000000000 = 833000000000/326500", function() {
     assert.equal(DIV_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),'833000000000/326500');
-=======
-    assert.equal(DIV_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), "24/20");
-  });
-  it("Тест 2 : 1/1000 / 54/99 = 99/54000", function() {
-    assert.equal(DIV_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), "99/54000");
-  });
-  it("Тест 3 : 833/500 / 653/1000000000 = 833000000000/326500", function() {
-    assert.equal(DIV_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),"833000000000/326500");
->>>>>>> 80a1f908057dec2ce34beb8a41d87013431a5f91
+
   });
 });
