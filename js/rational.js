@@ -45,6 +45,7 @@ function MUL_QQ_Q(num1, num2)
   var b = new Rational(num2.toString());
   a.numerator = MUL_ZZ_Z(a.numerator, b.numerator);
   a.denominator = MUL_NN_N(a.denominator, b.denominator);
+ // a = RED_Q_Q(a);
   return a;
 }
 
@@ -83,9 +84,8 @@ function SUB_QQ_Q(num1, num2)
 }
 function DIV_QQ_Q(num1, num2) { 
     let result = new Rational('1/1'); 
-    result.numerator = MUL_ZZ_Z(num1.numerator, TRANS_Z_N(num2.numerator)); 
-    result.denominator = MUL_NN_N(num1.denominator, ABS_Z_N(num2.denominator)); 
-    if (POZ_Z_D(num2.numerator) == 1) 
-    result.numerator = MUL_ZM_Z(result.numerator); 
+    result.numerator = MUL_NN_N(ABS_Z_N(num1.numerator),num2.denominator); 
+    result.denominator = MUL_NN_N(num1.denominator, TRANS_Z_N(num2.numerator)); 
+    result.numerator.isNegative = num1.numerator.isNegative * num2.numerator.isNegative;
     return result; 
     }
