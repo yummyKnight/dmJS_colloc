@@ -24,13 +24,13 @@ describe("COM_NN_D", function() {
 
 describe("ADD_1N_D", function() {
     it("999 + 1 = 1000", function(){
-        assert.equal(ADD_1N_N(new Natural("999")), "1000");
+        assert.equal(ADD_1N_N(new Natural("999")), 1000);
     });
     it("0 + 1 = 1", function(){
-        assert.equal(ADD_1N_N(new Natural("0")), "1");
+        assert.equal(ADD_1N_N(new Natural("0")), 1);
     });
     it("123456 + 1 = 123457", function(){
-        assert.equal(ADD_1N_N(new Natural("123456")), "123457");
+        assert.equal(ADD_1N_N(new Natural("123456")), 123457);
     });
 });
 
@@ -76,5 +76,30 @@ describe("MUL_ND_N", function() {
     });
     it("9999999999 * 9 = 89999999991", function(){
         assert.equal(MUL_ND_N(new Natural("9999999999"), new Natural("9")),89999999991);
+    });
+});
+describe("MOD_NN_N", function() {
+    it("3549561 % 54231 = 24546", function(){
+        assert.equal(MOD_NN_N(new Natural("3549561"), new Natural("54231")), "24546");
+    });
+    it("12 % 3 = 0", function(){
+        assert.equal(MOD_NN_N(new Natural("12"), new Natural("3")), "0");
+    });
+    it("9999999999 % 15978642 = 13348749", function(){
+        assert.equal(MOD_NN_N(new Natural("9999999999"), new Natural("15978642")), "13348749");
+    });
+    it("12 % 12 = 0", function(){
+        assert.equal(MOD_NN_N(new Natural("12"), new Natural("12")), "0");
+    });
+});
+describe("GCF_NN_N", function() {
+    it("8253467589 на 1554, НОД = 3", function(){
+        assert.equal(GCF_NN_N(new Natural ("8253467589"), new Natural("1554")), "3");
+    });
+    it("12 на 12, НОД = 12", function(){
+        assert.equal(GCF_NN_N(new Natural("12"), new Natural("12")), "12");
+    });
+    it("1005 на 328, НОД = 1", function(){
+        assert.equal(GCF_NN_N(new Natural("1005"), new Natural("328")), "1");
     });
 });
