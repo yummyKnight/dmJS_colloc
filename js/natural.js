@@ -137,7 +137,8 @@ function DIV_NN_Dk(first, second) {
         temp = first.toString().slice(0, secondLength + 1);
     }
 	temp = new Natural(temp);
-	// console.log(`${temp} - temp\n${second}`);
+	let tempLength = temp.digits.length;
+	console.log(`${temp} - temp\n${second}`);
     let i = 0;
     while (COM_NN_D(temp, second) != 1) {
         // While temp is greater or equal than second
@@ -145,8 +146,9 @@ function DIV_NN_Dk(first, second) {
 		console.log(i);
         temp = SUB_NN_N(temp, second);
         // console.log(`temp is ${temp} after ${i}-th substraction`);
-    }
-    return i;
+	}
+	// console.log(`${temp} - tmp, ${firstLength} - fl, ${temp.digits.length} - tl`);
+    return MUL_Nk_N(new Natural(String(i)), firstLength - tempLength);
 }
 
 function MUL_NN_N(first, second){ 
@@ -163,19 +165,16 @@ function DIV_NN_N(first, second) {
 	if (COM_NN_D(first, second) == 1) {
 		return Natural.zero;
 	} else {
-		let result = ''; 		
+		let result = Natural.zero;
 		do { 
 			let dd = DIV_NN_Dk(first, second); 
-			result += String(dd); 
-			let cc = MUL_ND_N(second, dd);
-			let ff = COM_NN_D(first, MUL_Nk_N(cc, first.digits.length - cc.digits.length)) == 1? 
-					MUL_Nk_N(cc, first.digits.length - cc.digits.length - 1) : 
-					MUL_Nk_N(cc, first.digits.length - cc.digits.length);
-			console.log(`${first}, ${ff}`);
-			first = SUB_NN_N(first, ff);
-			console.log(`${first} is first`); 
+			result = ADD_NN_N(result, dd);
+			let cc = MUL_NN_N(second, dd);
+			// console.log(`${first}, ${cc}`);
+			first = SUB_NN_N(first, cc);
+			// console.log(`${first} is first`); 
 		} while (COM_NN_D(first, second) != 1);
-		return new Natural(result);	
+		return result;	
 	}
 	 
 }
