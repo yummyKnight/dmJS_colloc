@@ -92,43 +92,6 @@ class Polynome {
 function DEG_P_N(first) {
     return new Natural(first.sortedDegs[0]);
 }
-
-function MUL_PP_P(first, second) {
-    let result = Polynome.zero;
-    for (let i of Object.keys(second.monomes)) {
-        result =ADD_PP_P( // Add to result
-            result,
-            MUL_PXk_P( // Mul result of previous operation by x^i, i is current monome deg
-                MUL_PQ_P( // Mul second poly with current poly coeff
-                    second,
-                    first.monomes[i]
-                ),
-                new Natural(i)
-            )
-        )
-    }
-    return result;
-}
-
-function DIV_PP_P(first, second) {
-    let result = Polynome.zero;
-    const secondDeg = DEG_P_N(second);
-    const secondCoef = second.monomes[secondDeg];
-    // While degree of the first poly is greater or equals degree of the second
-    while (COM_NN_D(DEG_P_N(first), secondDeg) != 1) {
-        // Finding new monome, that would be added to result
-        // The rule here is coeff of new monome would be coeff at the max degree of first 
-        // divided by the coeff at max degree of second (which is const), and the deg of monome
-        // is simply delta between first degree and second degree. 
-        let deltaDeg = SUB_NN_N(DEG_P_N(first), secondDeg);
-        let deltaCoef = DIV_QQ_Q(first.monomes[DEG_P_N(first)], secondDeg)
-        let currentMonome = new Polynome(`${deltaCoef}x^${deltaDeg}`);
-        result = ADD_PP_P(result, currentMonome);
-        first = SUB_PP_P(first, MUL_PP_P(second, currentMonome));
-    }
-    return result;
-}
-
 function MOD_PP_P(first, second) {
     return SUB_PP_P(first, MUL_PP_P(second, DIV_PP_P(first, second)));
 }
@@ -175,7 +138,7 @@ function MUL_PQ_P(poly, num)
     return poly;
 }
 // 100% work
-function MUL_Pxk_P(poly, num)
+function MUL_PXk_P(poly, num)
 {   
     for(let i of Object.keys(poly.monomes))
     {
@@ -183,6 +146,40 @@ function MUL_Pxk_P(poly, num)
         delete poly.monomes[i];
     }
     return poly;
+}
+function MUL_PP_P(first, second) {
+    let result = Polynome.zero;
+    for (let i of Object.keys(second.monomes)) {
+        result =ADD_PP_P( // Add to result
+            result,
+            MUL_PXk_P( // Mul result of previous operation by x^i, i is current monome deg
+                MUL_PQ_P( // Mul second poly with current poly coeff
+                    second,
+                    first.monomes[i]
+                ),
+                new Natural(i)
+            )
+        )
+    }
+    return result;
+}
+function DIV_PP_P(first, second) {
+    let result = Polynome.zero;
+    const secondDeg = DEG_P_N(second);
+    const secondCoef = second.monomes[secondDeg];
+    // While degree of the first poly is greater or equals degree of the second
+    while (COM_NN_D(DEG_P_N(first), secondDeg) != 1) {
+        // Finding new monome, that would be added to result
+        // The rule here is coeff of new monome would be coeff at the max degree of first 
+        // divided by the coeff at max degree of second (which is const), and the deg of monome
+        // is simply delta between first degree and second degree. 
+        let deltaDeg = SUB_NN_N(DEG_P_N(first), secondDeg);
+        let deltaCoef = DIV_QQ_Q(first.monomes[DEG_P_N(first)], secondDeg)
+        let currentMonome = new Polynome(`${deltaCoef}x^${deltaDeg}`);
+        result = ADD_PP_P(result, currentMonome);
+        first = SUB_PP_P(first, MUL_PP_P(second, currentMonome));
+    }
+    return result;
 }
 
 function DER_P_P(poly) {
