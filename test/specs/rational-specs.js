@@ -14,6 +14,7 @@ describe("RED_Q_Q", function()
 describe("INT_Q_B", function()
 {
   it("10 на 5 - вернет 1", function() {
+
     assert.equal(INT_Q_B(new Rational ("10/5")), '1');
   });
   it("2 на 3 - вернет 0", function() {

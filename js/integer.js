@@ -30,7 +30,7 @@ function ABS_Z_N(num)
 function POZ_Z_D(num)
 {
     let input = new Natural(num.toString());
-    if (NZERN_N_B(input) ==  true){
+    if (NZER_N_B(input) ==  true){
         return 0;
     }
     if (num.isNegative == true){
@@ -125,35 +125,7 @@ function ADD_ZZ_Z(first,second) {
 function SUB_ZZ_Z(first,second) {
   let a = new Integer(first.toString());
   let b = new Integer(second.toString());
-  var aNeg = POZ_Z_D(a);
-  var bNeg = POZ_Z_D(b);
-  if (aNeg == 0) {
-    return b;
-  }
-  if (bNeg == 0) {
-    return a;
-  }
-  a = ABS_Z_N(a);
-  b = ABS_Z_N(b);
-  var com = COM_NN_D(a, b);
-  if ((aNeg == bNeg) && (aNeg == 1)) {
-    return MUL_ZM_Z(TRANS_N_Z(ADD_NN_N(a, b)));
-  }
-  if ((aNeg == bNeg) && (aNeg == 2)) {
-    if (com == 2) {
-      return TRANS_N_Z(SUB_NN_N(a, b));
-    }
-    if (com == 1) {
-      return MUL_ZM_Z(TRANS_N_Z(SUB_NN_N(a, b)));
-    }
-    if (com == 0) {
-      return 0;
-    }
-  }
-  if ((aNeg == 2) && (bNeg == 1)) {
-    return TRANS_N_Z(ADD_NN_N(a, b));
-  }
-  if ((aNeg == 1) && (bNeg == 2)) {
-    return MUL_ZM_Z(TRANS_N_Z(ADD_NN_N(a, b)));
-  }
+  b = MUL_ZM_Z(b);
+  let res = ADD_ZZ_Z(a,b);
+  return res; 
 }

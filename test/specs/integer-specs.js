@@ -79,6 +79,7 @@ describe("SUB_ZZ_Z", function() {
     });
     it("-7987987 - -8798798 = 810811", function(){
         assert.equal(SUB_ZZ_Z(new Integer("-7987987"), new Integer("-8798798")), 810811);
+
     });
 });
 

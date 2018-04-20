@@ -106,16 +106,11 @@
 <h2> &nbspУмножение натурального числа на цифру.</h2>
 <br>
 <FORM name="form1">
-<p>Введите первое число:    <input type="text" size=10  name="st1"></p>
-<p>Введиет цифру       :  <input type="text" size=10 name="st2"></p>
+<p>Введите первое число:    <input type="text" size=10  name="st1" id = "first"></p>
+<p>Введиет цифру       :  <input type="text" size=10 name="st2" id="second"></p>
 <font color = "610B5E">Результат</font>
-<input type="button" value=Вычислить onClick="care(form1)"> 
-<script language="JavaScript">
-<!--//          
-
-//-->
-</script> 
-<input type="text" size=10 name="res" >
+<input type="button" value=Вычислить onClick="handle(MUL_ND_N)"> 
+<input type="text" size=10 name="res" id="result">
 <input type="reset" value=Отменить>
 </FORM>
 </font>
@@ -123,5 +118,6 @@
 <div id="clear"></div>
 <div id="footer"> <font color = "FFFFFF"><p> BigDigit project 2018 ©</p></font> </div>
 </div>
+<script src="js/handler.js"></script>
 </body>
 </html>
