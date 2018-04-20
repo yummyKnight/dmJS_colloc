@@ -212,3 +212,23 @@ function NMR_P_P(poly) {
                 )
         );
 }
+
+function FAC_P_Q(poly) {
+    var K = new Rational('1');
+    K.numerator = TRANS_N_Z(ABS_Z_N(poly.monomes[new Natural('0')].numerator));
+    for (let i of Object.keys(poly.monomes)) {
+        K.numerator = TRANS_N_Z(
+            GCF_NN_N(
+                K.numerator.num, poly.monomes[i].numerator.num
+            )
+        );
+        K.denominator = LCM_NN_N(K.denominator,poly.monomes[i].denominator); 
+        console.log(`poly[${i}] = ${poly.monomes[i]}; K = ${K}`)
+    }
+    console.log(`poly = ${poly}, K = ${K}`)
+    for (let i of Object.keys(poly.monomes)) {
+        console.log(`${poly.monomes[i]} / ${K}`)
+        poly.monomes[i] = DIV_QQ_Q(poly.monomes[i], K);
+    }
+    return K;
+}
