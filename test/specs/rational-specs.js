@@ -94,14 +94,14 @@ describe("MUL_QQ_Q", function()
 
 describe("DIV_QQ_Q", function()
 {
-  it("Тест 1 : 3/2 / 10/8 = 24/20", function() {
+  it("Тест 1 : 3/2 / 10/8 = 6/5", function() {
     assert.equal(DIV_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), '6/5');
   });
-  it("Тест 2 : 1/1000 / 54/99 = 99/54000", function() {
-    assert.equal(DIV_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), '99/54000');
+  it("Тест 2 : 1/1000 / 54/99 = 11/6000", function() {
+    assert.equal(DIV_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), '11/6000');
   });
-  it("Тест 3 : 833/500 / 653/1000000000 = 833000000000/326500", function() {
-    assert.equal(DIV_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),'833000000000/326500');
+  it("Тест 3 : 833/500 / 653/1000000000 = 1666000000/653", function() {
+    assert.equal(DIV_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),'1666000000/653');
 
   });
 });
