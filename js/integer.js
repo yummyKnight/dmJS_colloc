@@ -111,7 +111,7 @@ function ADD_ZZ_Z(first,second) {
   }
   if ((aNeg == 1) && (bNeg == 2)) {
     if (com == 1) {
-      return TRANS_N_Z(SUB_NN_N(a, b));
+      return TRANS_N_Z(SUB_NN_N(b, a));
     }
     if (com == 2) {
       return MUL_ZM_Z(TRANS_N_Z(SUB_NN_N(a, b)));
@@ -127,5 +127,5 @@ function SUB_ZZ_Z(first,second) {
   let b = new Integer(second.toString());
   b = MUL_ZM_Z(b);
   let res = ADD_ZZ_Z(a,b);
-  return res; 
+  return res;
 }
