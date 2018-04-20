@@ -46,10 +46,10 @@ function MUL_QQ_Q(num1, num2)
 {
     let a = new Rational(num1.toString());
     let b = new Rational(num2.toString());
-  a.numerator = MUL_ZZ_Z(a.numerator, b.numerator);
-  a.denominator = MUL_NN_N(a.denominator, b.denominator);
- // a = RED_Q_Q(a);
-  return a;
+    a.numerator = MUL_ZZ_Z(a.numerator, b.numerator);
+    a.denominator = MUL_NN_N(a.denominator, b.denominator);
+ a = RED_Q_Q(a);
+    return a;
 }
 
 function ADD_QQ_Q (num1, num2)
@@ -72,9 +72,9 @@ function SUB_QQ_Q(num1, num2)
 {
     let a = new Rational(num1.toString());
     let b = new Rational(num2.toString());
-  b.numerator = MUL_ZM_Z(b.numerator);
-  let res = ADD_QQ_Q(a,b);
-  return res;
+    b.numerator.isNegative = !b.numerator.isNegative;
+    let res = ADD_QQ_Q(a,b);
+    return res;
 //   if(COM_NN_D(a.denominator, b.denominator) == 0) {//Если знаменатели равны
 //     a.numerator = SUB_ZZ_Z(a.numerator,b.numerator);//Вычитаем числители
 //   }else{

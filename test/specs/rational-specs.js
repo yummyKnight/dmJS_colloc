@@ -82,13 +82,13 @@ describe("SUB_QQ_Q", function()
 describe("MUL_QQ_Q", function()
 {
   it("Тест 1 : 3/2 * 10/8 = 15/8", function() {
-    assert.equal(MUL_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), "30/16");
+    assert.equal(MUL_QQ_Q(new Rational ("3/2"), new Rational ("10/8")), "15/8");
   });
   it("Тест 2 : 1/1000 * 54/99 = 3/5500", function() {
-    assert.equal(MUL_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), "1/5500");
+    assert.equal(MUL_QQ_Q(new Rational ("1/1000"), new Rational ("54/99")), "3/5500");
   });
   it("Тест 3 : 833/500 * 653/1000000000 = 543949/5000000000000", function() {
-    assert.equal(MUL_QQ_Q(new Rational ("833/500"), new Rational ("653/1000000000")),"543949/5000000000000");
+    assert.equal(MUL_QQ_Q(new Rational ("833/500"), new Rational ("653/10000000000")).toString(),"543949/5000000000000");
   });
 });
 
