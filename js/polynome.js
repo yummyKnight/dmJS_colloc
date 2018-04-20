@@ -121,8 +121,9 @@ function DIV_PP_P(first, second) {
         // divided by the coeff at max degree of second (which is const), and the deg of monome
         // is simply delta between first degree and second degree. 
         let deltaDeg = SUB_NN_N(DEG_P_N(first), secondDeg);
-        let deltaCoef = DIV_QQ_Q(first.monomes[DEG_P_N(first)], secondDeg)
+        let deltaCoef = DIV_QQ_Q(first.monomes[DEG_P_N(first)], second.monomes[secondDeg]);
         let currentMonome = new Polynome(`${deltaCoef}x^${deltaDeg}`);
+        console.log(`cm is = ${currentMonome}`)
         result = ADD_PP_P(result, currentMonome);
         first = SUB_PP_P(first, MUL_PP_P(second, currentMonome));
     }
