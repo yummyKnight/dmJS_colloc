@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 describe("DIV_PP_P", function() {
     it("2x^6-x^5+12x^3-72x^2+3 / x^3+2x^2-1 = +2/1x^3-5/1x^2+10/1x-6/1", function(){
         assert.equal(DIV_PP_P(new Polynome("2x^6-x^5+12x^3-72x^2+3"), new Polynome("x^3+2x^2-1")), "+2/1x^3-5/1x^2+10/1x-6/1");
     });
 });
-=======
 describe("DEG_P_N", function() {
     it("x^4+x^5+x^1566341564 = 1566341564", function(){
         assert.equal(DEG_P_N(new Polynome("x^4+x^5+x^1566341564")),1566341564);
@@ -42,4 +40,3 @@ describe("SUB_PP_P", function()
     assert.equal(SUB_PP_P(new Polynome ("(x^100 + 1"), new Polynome ("x + 100"))," x^100 - x - 99");
   });
 });
->>>>>>> 80a1f908057dec2ce34beb8a41d87013431a5f91
