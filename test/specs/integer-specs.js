@@ -1,6 +1,6 @@
 describe("ABS_Z_N", function() {
     it("-12312447685764 = 12312447685764", function(){
-        assert.equal(ABS_Z_N(new Integer("-12312447685764")),-12312447685764);
+        assert.equal(ABS_Z_N(new Integer("-12312447685764")),12312447685764);
     });
     it("316474923658743 = 316474923658743", function(){
         assert.equal(ABS_Z_N(new Integer("316474923658743")),316474923658743);
@@ -36,13 +36,13 @@ describe("MUL_ZM_Z", function() {
 
 describe("TRANS_N_Z", function() {
     it("12312447685764 => +12312447685764", function(){
-        assert.equal(TRANS_N_Z_N(new Natural("12312447685764")), 12312447685764);
+        assert.equal(TRANS_N_Z(new Natural("12312447685764")), 12312447685764);
     });
     it("316474923658743 => +316474923658743", function(){
         assert.equal(TRANS_N_Z(new Natural("316474923658743")), 316474923658743);
     });
     it("0 => +0", function(){
-        assert.equal(TRANS_N_Z_N(new Natural("0")), 0);
+        assert.equal(TRANS_N_Z(new Natural("0")), 0);
     });
 });
 
@@ -67,6 +67,12 @@ describe("ADD_ZZ_Z", function() {
     });
     it("-7987987 + -8798798 = -16786785", function(){
         assert.equal(ADD_ZZ_Z(new Integer("-7987987"), new Integer("-8798798")),-16786785);
+    });
+    it("-7987987 + 8798798 = 810811", function(){
+        assert.equal(ADD_ZZ_Z(new Integer("-7987987"), new Integer("8798798")),810811);
+    });
+    it("-8749879879879 + 787991454 = ", function(){
+        assert.equal(ADD_ZZ_Z(new Integer("-8749879879879"), new Integer("787991454")),-8749091888425);
     });
 });
 
@@ -98,24 +104,26 @@ describe("MUL_ZZ_Z", function() {
 //надо проверить
 describe("DIV_ZZ_Z", function() {
     it("12312447685764 / -8 = -1539055960720 ", function(){
-        assert.equal(MUL_ZZ_Z(new Integer("12312447685764"), new Integer("-8")), -1539055960720);
+        assert.equal(DIV_ZZ_Z(new Integer("12312447685764"), new Integer("-8")), -1539055960720);
     });
     it("-316474923658743 / 3215 = -98436990251", function(){
-        assert.equal(MUL_ZZ_Z(new Integer("-316474923658743"), new Integer("3215")), -98436990251);
+        assert.equal(DIV_ZZ_Z(new Integer("-316474923658743"), new Integer("3215")), -98436990251);
     });
     it("0 / -43254767 = 0", function(){
-        assert.equal(MUL_ZZ_Z(new Integer("0"), new Integer("-43254767")), 0);
+        assert.equal(DIV_ZZ_Z(new Integer("0"), new Integer("-43254767")), 0);
     });
 });
 
 describe("MOD_ZZ_Z", function() {
-    it("12312447685764 / -8 = -5 ", function(){
-        assert.equal(MUL_ZZ_Z(new Integer("12312447685764"), new Integer("-8")), -5);
+    it("12312447685764 % -8 = -4 ", function(){
+        assert.equal(MOD_ZZ_Z(new Integer("12312447685764"), new Integer("-8")), -4);
     });
-    it("-316474923658743 / 3215 = -5", function(){
-        assert.equal(MUL_ZZ_Z(new Integer("-316474923658743"), new Integer("3215")), -5);
+    it("316474923658743 % 3215 = 1778", function(){
+        assert.equal(MOD_ZZ_Z(new Integer("316474923658743"), new Integer("3215")), "1778");
     });
     it("0 / -43254767 = 0", function(){
-        assert.equal(MUL_ZZ_Z(new Integer("0"), new Integer("-43254767")), 0);
+        assert.equal(MOD_ZZ_Z(new Integer("0"), new Integer("-43254767")), 0);
     });
+    
+
 });

@@ -35,29 +35,33 @@ function TRANS_Q_Z(num)
 
 function INT_Q_B(num)
 {
-  var MOD = MOD_ZZ_Z (num.numerator, num.denominator);
-  return MOD == 0 ? 1 : 0;
+  let MOD = MOD_ZZ_Z (num.numerator, TRANS_N_Z(num.denominator));
+  if(MOD.num == 0)
+  return 1;
+  else
+  return 0;
 }
 
 function MUL_QQ_Q(num1, num2)
 {
-  var a = new Rational(num1.toString());
-  var b = new Rational(num2.toString());
+    let a = new Rational(num1.toString());
+    let b = new Rational(num2.toString());
   a.numerator = MUL_ZZ_Z(a.numerator, b.numerator);
   a.denominator = MUL_NN_N(a.denominator, b.denominator);
+ // a = RED_Q_Q(a);
   return a;
 }
 
 function ADD_QQ_Q (num1, num2)
 {
-  var a = new Rational(num1.toString());
-  var b = new Rational(num2.toString());
+    let a = new Rational(num1.toString());
+    let b = new Rational(num2.toString());
   if(COM_NN_D(a.denominator, b.denominator) == 0) {//Если знаменатели равны
     a.numerator = ADD_ZZ_Z(a.numerator,b.numerator);//Складываем числители
   }else{//иначе
-    var lcm = LCM_NN_N(a.denominator,b.denominator);//Находим НОК
-    a.numerator = MUL_ZZ_Z(a.numerator,DIV_NN_N(lcm, a.denominator)); //Умножаем числитель первого числа на НОК/знаменатель первого числа
-    b.numerator = MUL_ZZ_Z(b.numerator,DIV_NN_N(lcm, b.denominator));//Умножаем числитель второго числа на НОК/знаменатель первого числа
+    let lcm = LCM_NN_N(a.denominator,b.denominator);//Находим НОК
+    a.numerator = MUL_ZZ_Z(a.numerator,TRANS_N_Z(DIV_NN_N(lcm, a.denominator))); //Умножаем числитель первого числа на НОК/знаменатель первого числа
+    b.numerator = MUL_ZZ_Z(b.numerator,TRANS_N_Z(DIV_NN_N(lcm, b.denominator)));//Умножаем числитель второго числа на НОК/знаменатель первого числа
     a.numerator = ADD_ZZ_Z(a.numerator,b.numerator)// Складываем
     a.denominator = lcm;
   }
@@ -66,8 +70,8 @@ function ADD_QQ_Q (num1, num2)
 
 function SUB_QQ_Q(num1, num2)
 {
-  var a = new Rational(num1.toString());
-  var b = new Rational(num2.toString());
+    let a = new Rational(num1.toString());
+    let b = new Rational(num2.toString());
   b.numerator = MUL_ZM_Z(b.numerator);
   let res = ADD_QQ_Q(a,b);
   return res;
@@ -83,9 +87,8 @@ function SUB_QQ_Q(num1, num2)
 }
 function DIV_QQ_Q(num1, num2) { 
     let result = new Rational('1/1'); 
-    result.numerator = MUL_ZZ_Z(num1.numerator, TRANS_Z_N(num2.numerator)); 
-    result.denominator = MUL_NN_N(num1.denominator, ABS_Z_N(num2.denominator)); 
-    if (POZ_Z_D(num2.numerator) == 1) 
-    result.numerator = MUL_ZM_Z(result.numerator); 
+    result.numerator = MUL_NN_N(ABS_Z_N(num1.numerator),num2.denominator); 
+    result.denominator = MUL_NN_N(num1.denominator, TRANS_Z_N(num2.numerator)); 
+    result.numerator.isNegative = num1.numerator.isNegative * num2.numerator.isNegative;
     return result; 
     }

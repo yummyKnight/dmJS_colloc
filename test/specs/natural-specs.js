@@ -91,6 +91,12 @@ describe("MOD_NN_N", function() {
     it("12 % 12 = 0", function(){
         assert.equal(MOD_NN_N(new Natural("12"), new Natural("12")), "0");
     });
+    it("12312447685764 % 8 = 4", function(){
+        assert.equal(MOD_NN_N(new Natural("12312447685764"), new Natural("8")), "4");
+    });
+    it("316474923658743 % 3215 = 1778", function(){
+        assert.equal(MOD_NN_N(new Natural("316474923658743"), new Natural("3215")), 1778);
+    });
 });
 describe("GCF_NN_N", function() {
     it("8253467589 на 1554, НОД = 3", function(){
@@ -101,5 +107,60 @@ describe("GCF_NN_N", function() {
     });
     it("1005 на 328, НОД = 1", function(){
         assert.equal(GCF_NN_N(new Natural("1005"), new Natural("328")), "1");
+    });
+});
+describe("SUB_NDN_N", function() {
+    it("15 - 3*5 = 0", function(){
+        assert.equal(SUB_NDN_N(new Natural ("15"), new Natural("3"), new Natural("5")), "0");
+    });
+    it("4547878 - 45458 * 9 = 4138756", function(){
+        assert.equal(SUB_NDN_N(new Natural("4547878"), new Natural("9"), new Natural("45458")), "4138756");
+    });
+    it("5468498787897987 - 78754454688 * 8 = 5467868752260483", function(){
+        assert.equal(SUB_NDN_N(new Natural("5468498787897987"), new Natural("8"), new Natural("78754454688")), "5467868752260483");
+    });
+});
+describe("LCM_NN_N", function() {
+    it("84987878 на 4878787, НОK = 414637754343986", function(){
+        assert.equal(LCM_NN_N(new Natural ("84987878"), new Natural("4878787")), 414637754343986);
+    });
+    it("5698 на 95987, НОK = 546933926", function(){
+        assert.equal(LCM_NN_N(new Natural("5698"), new Natural("95987")), 546933926);
+    });
+    it("8498146 на 68879874984, НОK = 292675617037889860", function(){
+        assert.equal(LCM_NN_N(new Natural("8498146"), new Natural("68879874984")), 292675617037889860);
+    });
+});
+describe("MUL_NN_N", function() {
+    it("35469 * 84787 = 3007310103", function(){
+        assert.equal(MUL_NN_N(new Natural ("35469"), new Natural("84787")),3007310103);
+    });
+    it("6487878 * 35156484 = 228090979100952", function(){
+        assert.equal(MUL_NN_N(new Natural("6487878"), new Natural("35156484")),228090979100952);
+    });
+    it("9999999999 * 8798798798794 = 87987987979141201201206", function(){
+        assert.equal(MUL_NN_N(new Natural("9999999999"), new Natural("8798798798794")),87987987979141201201206);
+    });
+});
+describe("DIV_NN_N", function() {
+    it("84987878 / 4547 = 18690", function(){
+        assert.equal(DIV_NN_N(new Natural ("84987878"), new Natural("4547")),"18690");
+    });
+    it("684987987987987 / 687687878 =  996073", function(){
+        assert.equal(DIV_NN_N(new Natural("684987987987987"), new Natural("687687878")), "996073");
+    });
+    it("1 / 6 = 0", function(){
+        assert.equal(DIV_NN_N(new Natural("1"), new Natural("6")),0);
+    });
+});
+describe("DIV_NN_Dk", function() {
+    it("42 / 42 ^ 42", function(){
+        assert.equal(DIV_NN_Dk(new Natural ("42"), new Natural("42")),"1");
+    });
+    it("123 20", function(){
+        assert.equal(DIV_NN_Dk(new Natural("123"), new Natural("20")), "6");
+    });
+    it("123 33", function(){
+        assert.equal(DIV_NN_Dk(new Natural("123"), new Natural("33")),"3");
     });
 });

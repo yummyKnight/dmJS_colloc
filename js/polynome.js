@@ -121,8 +121,9 @@ function DIV_PP_P(first, second) {
         // divided by the coeff at max degree of second (which is const), and the deg of monome
         // is simply delta between first degree and second degree. 
         let deltaDeg = SUB_NN_N(DEG_P_N(first), secondDeg);
-        let deltaCoef = DIV_QQ_Q(first.monomes[DEG_P_N(first)], secondDeg)
+        let deltaCoef = DIV_QQ_Q(first.monomes[DEG_P_N(first)], second.monomes[secondDeg]);
         let currentMonome = new Polynome(`${deltaCoef}x^${deltaDeg}`);
+        console.log(`cm is = ${currentMonome}`)
         result = ADD_PP_P(result, currentMonome);
         first = SUB_PP_P(first, MUL_PP_P(second, currentMonome));
     }
@@ -153,10 +154,10 @@ for(let i of Object.keys(second.monomes))
     }
     else
     {   // else creat such degree and copy coef from factor
-        first.monomes[i] = second.monome[i];
+        first.monomes[i] = second.monomes[i];
     }
 }
-    return first
+    return first;
 }
 function  SUB_PP_P(first, second)
 {   // change sign in every coef
@@ -175,7 +176,7 @@ function MUL_PQ_P(poly, num)
     return poly;
 }
 // 100% work
-function MUL_Pxk_P(poly, num)
+function MUL_PXk_P(poly, num)
 {   
     for(let i of Object.keys(poly.monomes))
     {
@@ -184,7 +185,6 @@ function MUL_Pxk_P(poly, num)
     }
     return poly;
 }
-
 function DER_P_P(poly) {
     let res = Polynome.zero;
     for (let i of Object.keys(poly.monomes)) {
