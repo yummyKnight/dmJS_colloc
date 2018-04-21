@@ -1,8 +1,14 @@
-// describe("DIV_PP_P", function() {
-//     it("2x^6-x^5+12x^3-72x^2+3 / x^3+2x^2-1 = +2/1x^3-5/1x^2+10/1x-6/1", function(){
-//         assert.equal(DIV_PP_P(new Polynome("2x^6-x^5+12x^3-72x^2+3"), new Polynome("x^3+2x^2-1")), "+2/1x^3-5/1x^2+10/1x-6/1");
-//     });
-// });
+describe("DIV_PP_P", function() {
+    it("2x^6-x^5+12x^3-72x^2+3 / x^3+2x^2-1 = +2/1x^3-5/1x^2+10/1x^1-6/1", function(){
+        assert.equal(DIV_PP_P(new Polynome("2x^6-1x^5+12x^3-72x^2+3"), new Polynome("x^3+2x^2-1")).toString(), "+2/1x^3-5/1x^2+10/1x^1-6/1");
+    });
+    it("x^2+x+1 / x + 1 = x", function() {
+      assert.equal(DIV_PP_P(new Polynome("x^2+x+1"), new Polynome("x+1")).toString(), "+1/1x^1");
+    });
+    it("x^2+2x+1 / x + 1 = x + 1", function() {
+      assert.equal(DIV_PP_P(new Polynome("x^2+2x+1"), new Polynome("x+1")).toString(), "+1/1x^1+1/1");
+    });
+});
 describe("DEG_P_N", function() {
     it("x^4+x^5+x^1566341564 = 1566341564", function(){
         assert.equal(DEG_P_N(new Polynome("x^4+x^5+x^1566341564")),1566341564);
@@ -40,3 +46,12 @@ describe("SUB_PP_P", function()
     assert.equal(SUB_PP_P(new Polynome ("x^100 + 1"), new Polynome ("x + 100")).toString(),"+1/1x^100-1/1x^1-99/1");
   });
 });
+
+describe("DER_P_P", function() {
+  it("(+1/1x^3+1/1x^2+1/1)\'=+1/1x^2+1/1x", function() {
+    assert.equal(DER_P_P(new Polynome("x^3+x^2+1")).toString(), "+1/1x^2+1/1x^1");
+  })
+  it("(1/1)'= 0", function() {
+    assert.equal(DER_P_P(new Polynome("1")).toString(), "");
+  })
+})
