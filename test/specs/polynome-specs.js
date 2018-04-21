@@ -50,8 +50,15 @@ describe("SUB_PP_P", function()
 describe("DER_P_P", function() {
   it("(+1/1x^3+1/1x^2+1/1)\'=+1/1x^2+1/1x", function() {
     assert.equal(DER_P_P(new Polynome("x^3+x^2+1")).toString(), "+1/1x^2+1/1x^1");
-  })
+  });
   it("(1/1)'= 0", function() {
-    assert.equal(DER_P_P(new Polynome("1")).toString(), "");
-  })
-})
+    assert.equal(DER_P_P(new Polynome("1")).toString(), "0");
+  });
+});
+
+
+describe("NMR_P_P", function() {
+  it("x^2+2x+1 = x + 1", function() {
+    assert.equal(NMR_P_P(new Polynome("x^2+2x+1")).toString(), "+1/1x^1+1/1");
+  });
+});

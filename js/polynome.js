@@ -60,7 +60,7 @@ class Polynome {
         // Strip '+' and trim string
         //console.log(result);
         result = result[1] == '+' ? result.slice(2).trim() : result.trim();
-        return result;
+        return result != '' ? result : '0';
     }
     get sortedDegs() {
         return Object.keys(this.monomes).sort((a, b) => {
