@@ -52,10 +52,16 @@ describe("DER_P_P", function() {
     assert.equal(DER_P_P(new Polynome("x^3+x^2+1")).toString(), "+1/1x^2+1/1x^1");
   });
   it("(1/1)'= 0", function() {
-<<<<<<< HEAD
     assert.equal(DER_P_P(new Polynome("1")).toString(), "");
   })
-})
+
+    assert.equal(DER_P_P(new Polynome("1")).toString(), "0");
+  });
+describe("NMR_P_P", function() {
+  it("x^2+2x+1 = x + 1", function() {
+    assert.equal(NMR_P_P(new Polynome("x^2+2x+1")).toString(), "+1/1x^1+1/1");
+  });
+});
 describe("MOD_PP_P", function()
 {
   it("(3x^5+2x^4-12x^8-4)/(x^3-3) => -99x^2+6/1x-4", function() {
@@ -70,15 +76,3 @@ describe("MOD_PP_P", function()
     "-65/1x^2+10/1x-3/1");
   });
 });
-=======
-    assert.equal(DER_P_P(new Polynome("1")).toString(), "0");
-  });
-});
-
-
-describe("NMR_P_P", function() {
-  it("x^2+2x+1 = x + 1", function() {
-    assert.equal(NMR_P_P(new Polynome("x^2+2x+1")).toString(), "+1/1x^1+1/1");
-  });
-});
->>>>>>> cb18ccacec371ecde38d089d3f5e5a9631302d08
