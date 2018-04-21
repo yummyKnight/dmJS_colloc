@@ -17,7 +17,7 @@ class Polynome {
             }
         }
         if (monomes.length) {
-            monomes_split.push(string);            
+            monomes_split.push(string);
         }
         //console.log(monomes_split);
         monomes = monomes_split.map((i) => {
@@ -32,7 +32,7 @@ class Polynome {
                                 if (i.indexOf('^') != -1) {
                                     pair = i.split('x');
                                 } else {
-                                    pair = [i.slice(0, -1), '^1'] 
+                                    pair = [i.slice(0, -1), '^1']
                                 }
                             } else {
                                     pair = [i, '^0']
@@ -80,13 +80,13 @@ class Polynome {
     }
     // idk why not working
     deleteZero()
-    {   
+    {
         for (let i of Object.keys(this.monomes))
         {
             if (COM_NN_D(this.monomes[i].numerator.num.strip(), Natural.zero) == 0) {
-                delete this.monomes[i];                
+                delete this.monomes[i];
             }
-        }   
+        }
         return this;
     }
 }
@@ -131,9 +131,9 @@ function DIV_PP_P(first, second) {
     while (COM_NN_D(DEG_P_N(first), secondDeg) != 1) {
         //console.log("Not here");
         // Finding new monome, that would be added to result
-        // The rule here is coeff of new monome would be coeff at the max degree of first 
+        // The rule here is coeff of new monome would be coeff at the max degree of first
         // divided by the coeff at max degree of second (which is const), and the deg of monome
-        // is simply delta between first degree and second degree. 
+        // is simply delta between first degree and second degree.
         let deltaDeg = SUB_NN_N(DEG_P_N(first), secondDeg);
         // console.log(`${deltaDeg.toString()} dd`);
         let deltaCoef = DIV_QQ_Q(first.monomes[DEG_P_N(first)], secondCoef                                                                                                                      );
@@ -163,11 +163,11 @@ function GCD_PP_P(first, second) {
     return ADD_PP_P(first, second);
 }
 function ADD_PP_P(first, second)
-{  
+{
     first = new Polynome('' + first);
     second = new Polynome('' + second);
 for(let i of Object.keys(second.monomes))
-{  
+{
     if(first.monomes[i] !== undefined)
     {    // if degree exists, sum coef
        first.monomes[i] = ADD_QQ_Q(first.monomes[i],second.monomes[i])
@@ -184,7 +184,7 @@ function  SUB_PP_P(first, second)
     first = new Polynome(first + '');
     second = new Polynome(second + '');
     for(let i of Object.keys(second.monomes))
-    {   
+    {
         second.monomes[i].numerator.isNegative = !second.monomes[i].numerator.isNegative;
     }
     return ADD_PP_P(first,second);
@@ -193,7 +193,7 @@ function MUL_PQ_P(poly, num)
 {
     poly = new Polynome(poly.toString());
     for(let i of Object.keys(poly.monomes))
-    {   
+    {
         //console.log(`${poly.monomes[i]}, ${num}`);
         poly.monomes[i] = MUL_QQ_Q(poly.monomes[i], num);
     }
@@ -201,7 +201,7 @@ function MUL_PQ_P(poly, num)
 }
 // 100% work
 function MUL_PXk_P(poly, num)
-{   
+{
     let copy = new Polynome('');
     for(let i of Object.keys(poly.monomes))
     {
@@ -216,13 +216,13 @@ function DER_P_P(poly) {
         //console.log(i);
         if (i != "0") {
             //console.log(`Adding to ${newDeg} value ${poly.monomes[i]}`);
-            res.monomes[newDeg] = poly.monomes[i];
+            res.monomes[newDeg] = MUL_QQ_Q(new Rational(i + ''), poly.monomes[i]);
         }
     }
     return res;
 }
 function LED_P_Q(poly)
-{   
+{
    return new Rational(poly.monomes[DEG_P_N(poly)].toString());
 }
 
@@ -246,7 +246,7 @@ function FAC_P_Q(poly) {
                 K.numerator.num, poly.monomes[i].numerator.num
             )
         );
-        K.denominator = LCM_NN_N(K.denominator,poly.monomes[i].denominator); 
+        K.denominator = LCM_NN_N(K.denominator,poly.monomes[i].denominator);
         //console.log(`poly[${i}] = ${poly.monomes[i]}; K = ${K}`)
     }
     //console.log(`poly = ${poly}, K = ${K}`)
